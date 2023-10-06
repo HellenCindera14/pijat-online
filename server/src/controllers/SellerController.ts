@@ -28,6 +28,15 @@ class SellerController {
             return res.status(500).json({ error: "Failed register seller!"})
         }
     }
+
+    async login(req: Request, res: Response) {
+        try {
+            const response = await SellerService.login(req.body)
+            return res.status(200).json(response)
+        } catch (err) {
+            return res.status(500).json({ error: "Failed login seller!"})
+        }
+    }
 }
 
 export default new SellerController()

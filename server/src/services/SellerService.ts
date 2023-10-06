@@ -2,6 +2,7 @@ import { Repository } from "typeorm";
 import { Seller } from "../entities/Sellers";
 import { AppDataSource } from "../data-source";
 import * as bcrypt from "bcrypt"
+import * as jwt from "jsonwebtoken"
 
 class SellerService {
     private readonly sellerRepository: Repository<Seller> =
@@ -84,6 +85,43 @@ class SellerService {
             return {
                 message: "Seller successfully updated!",
                 seller: seller,
+            }
+        } catch (err) {
+            throw new Error("Something wrong on the server!")
+        }
+    }
+
+    async login(reqBody?: any): Promise<any> {
+        try {
+            const seller = await this.sellerRepository.findOne({
+                where: {
+                    email: reqBody.email,
+                },
+                select: ["id", "name", "email", "password"]
+            })
+
+            if(!seller) {
+                throw new Error("Email / Password is wrong!")
+            }
+
+            const isPassValid = await bcrypt.compare(reqBody.password, seller.password) 
+
+            if (!isPassValid) {
+                throw new Error("Email / Password is wrong!")
+            }
+
+            const key = process.env.SECRET_KEY as string        
+
+            const token = jwt.sign({seller}, key, { expiresIn: '1d'})
+            
+            return {
+                message: "Login successfully!",
+                seller: {
+                    id: seller.id,
+                    name: seller.name,
+                    email: seller.email,
+                },
+                token: token
             }
         } catch (err) {
             throw new Error("Something wrong on the server!")
