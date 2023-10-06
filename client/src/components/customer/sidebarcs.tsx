@@ -6,19 +6,19 @@ export default function SidebarCs() {
     <>
       <Flex direction={"column"} h={"100vh"} py={4} justifyContent={"space-between"}>
         <Stack px={4}>
-          <Link to="/dashboard">
+          <Link to="/cs/dashboard">
             <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
               <GoHome />
               Dashboard
             </Button>
           </Link>
-          <Link to="/services">
+          <Link to="/cs/services">
             <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
               <GoStack />
               Layanan
             </Button>
           </Link>
-          <Link to="/profile">
+          <Link to="/cs/profile">
             <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
               <GoPerson />
               Profile

@@ -1,9 +1,12 @@
 import { Box, Flex, Progress, Text } from "@chakra-ui/react";
+import React from "react";
 
 export default function PerformanceChart() {
   return (
     <Box p={4} borderWidth="1px" borderRadius="lg">
-      <Text fontSize="xl" mb={4}>Performa</Text>
+      <Text fontSize="xl" mb={4}>
+        Performa
+      </Text>
       <Flex alignItems="center" mb={4}>
         <Text mr={2}>Task A:</Text>
         <Progress flex="1" size="sm" colorScheme="green" value={70} />

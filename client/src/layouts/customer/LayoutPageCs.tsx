@@ -15,7 +15,7 @@ export default function LayoutPageCs({ children }: LayoutProps) {
           <Box w={"25%"} top={"7.5vh"} position={"fixed"} left={0} h={"100vh"} bgColor={"white"}>
             <SidebarCs />
           </Box>
-          <Box w={"100%"} p={5} bgColor={"whitesmoke"} left={"25%"} position={"fixed"} h={"100vh"}>
+          <Box w={"75%"} p={5} bgColor={"whitesmoke"} left={"25%"} position={"fixed"} h={"100vh"}>
             {children}
           </Box>
         </Flex>
