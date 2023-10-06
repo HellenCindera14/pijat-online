@@ -26,9 +26,6 @@ export class Invoice {
     
     @Column({ default: 0 })
     price: number
-    
-    @Column({ default: false })
-    isPijetUrut: boolean
 
     @Column({ default: false })
     isPijetRefleksi: boolean
@@ -37,7 +34,7 @@ export class Invoice {
     isPijetRelaksasi: boolean
 
     @Column({ default: false })
-    isPijetkretek: boolean
+    isPijetKretek: boolean
     
     @ManyToOne(() => Seller, (seller) => seller.invoices, {
         onDelete : "NO ACTION",

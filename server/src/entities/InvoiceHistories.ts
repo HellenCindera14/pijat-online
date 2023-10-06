@@ -3,7 +3,7 @@ import { Seller } from "./Sellers"
 import { User } from "./Users"
 import { Invoice } from "./Invoices"
 
-@Entity({ name: "invoiceHistories" })
+@Entity({ name: "invoicehistories" })
 export class InvoiceHistory {
 
     @PrimaryGeneratedColumn()
@@ -13,16 +13,13 @@ export class InvoiceHistory {
     price: number
     
     @Column({ default: false })
-    isPijetUrut: boolean
-
-    @Column({ default: false })
     isPijetRefleksi: boolean
 
     @Column({ default: false })
     isPijetRelaksasi: boolean
 
     @Column({ default: false })
-    isPijetkretek: boolean
+    isPijetKretek: boolean
     
     @OneToOne(() => Invoice, (invoice) => invoice.invoiceHistory, {
         onDelete : "NO ACTION",

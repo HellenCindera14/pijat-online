@@ -12,6 +12,9 @@ export class User {
     name: string
 
     @Column()
+    password: string
+
+    @Column()
     address: string
 
     @Column()
