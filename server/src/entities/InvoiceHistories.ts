@@ -1,33 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
+import { Seller } from "./Sellers"
+import { User } from "./Users"
 import { Invoice } from "./Invoices"
-import { Rating } from "./Ratings"
 
-@Entity({ name: "sellers" })
-export class Seller {
+@Entity({ name: "invoiceHistories" })
+export class InvoiceHistory {
 
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    name: string
-
-    @Column()
-    address: string
-
-    @Column()
-    district: string
-    
-    @Column()
-    email: string
-    
-    @Column()
-    phone: string
-    
-    @Column({ nullable: true })
-    image: string
-
     @Column({ default: 0 })
-    balance: string
+    price: number
     
     @Column({ default: false })
     isPijetUrut: boolean
@@ -40,18 +23,25 @@ export class Seller {
 
     @Column({ default: false })
     isPijetkretek: boolean
-
-    @OneToMany(() => Invoice, (invoice) => invoice.seller, {
+    
+    @OneToOne(() => Invoice, (invoice) => invoice.invoiceHistory, {
         onDelete : "NO ACTION",
         onUpdate : "NO ACTION"
     })
-    invoices: Invoice[]
+    invoice: Invoice
 
-    @OneToMany(() => Rating, (rating) => rating.seller, {
+    @ManyToOne(() => Seller, (seller) => seller.invoices, {
         onDelete : "NO ACTION",
         onUpdate : "NO ACTION"
     })
-    ratings: Rating[]
+
+    seller: Seller
+    
+    @ManyToOne(() => User, (user) => user.invoices, {
+        onDelete : "NO ACTION",
+        onUpdate : "NO ACTION"
+    })
+    user: User
 
     @CreateDateColumn()
     created_at: Date; // Creation date
