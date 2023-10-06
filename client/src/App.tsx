@@ -5,6 +5,8 @@ import Services from "./pages/customer/services";
 import ServiceRefleksi from "./pages/customer/serviceRefleksi";
 import ServicePijatUrut from "./pages/customer/servicePijatUrut";
 import ServiceKretek from "./pages/customer/serviceKretek";
+import Register from "./pages/auth/Register";
+import Login from "./pages/auth/Login";
 import Home from "./pages/home";
 import Dashboardkp from "./pages/kape/dashboardkp";
 import Complaint from "./pages/kape/complaint";
@@ -15,6 +17,10 @@ function App() {
   return (
     <>
       <Routes>
+        {/* Auth */}\
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        {/* home */}
         <Route path="/" element={<Home />} />
         {/* customet */}
         <Route path="/cs/dashboard" element={<DashboardCs />} />
@@ -23,7 +29,6 @@ function App() {
         <Route path="/cs/services/pijat_refleksi" element={<ServiceRefleksi />} />
         <Route path="/cs/services/pijat_urut" element={<ServicePijatUrut />} />
         <Route path="/cs/services/pijat_kretek" element={<ServiceKretek />} />
-
         {/* kape */}
         <Route path="/kape/dashboard" element={<Dashboardkp />} />
         <Route path="/kape/performance" element={<Performance />} />
