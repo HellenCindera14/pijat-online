@@ -1,7 +1,7 @@
 import { Box, Button, Center, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import { GoCopilot } from "react-icons/go";
 import { Link } from "react-router-dom";
-export default function Login() {
+export default function RegisterCs() {
   return (
     <>
       <Center>
@@ -12,6 +12,14 @@ export default function Login() {
           </Text>
           <Box w={"40%"}>
             <FormControl>
+              <Box>
+                <FormLabel>Nama</FormLabel>
+                <Input
+                  type="text"
+                  name="name"
+                  //   onChange={handleChangeLogin}
+                />
+              </Box>
               <Box>
                 <FormLabel>Email</FormLabel>
                 <Input
@@ -32,16 +40,16 @@ export default function Login() {
           </Box>
           <Box display={"flex"} alignItems={"start"} py={2} flexDirection={"column"}>
             <Box display={"flex"} gap={2}>
-              <Text>Belum punya akun,</Text>
-              <Link to={"/register"}>
+              <Text>Sudah punya akun,</Text>
+              <Link to={"/login"}>
                 <Text color={"teal"} fontWeight={"bold"}>
-                  Register dulu!
+                  Ayo Login!
                 </Text>
               </Link>
             </Box>
             <Text>Lupa Password?</Text>
-            <Link to={"/auth/login"}>
-              <Button colorScheme="teal">Login</Button>
+            <Link to={"/auth/register"}>
+              <Button colorScheme="teal">Register</Button>
             </Link>
           </Box>
         </Box>
