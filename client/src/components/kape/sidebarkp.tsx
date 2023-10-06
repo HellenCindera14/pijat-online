@@ -32,7 +32,7 @@ export default function SidebarKp() {
           </Link>
         </Stack>
         <Stack px={4} pb={"7.5vh"}>
-          <Link to="#">
+          <Link to="/">
             <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
               <GoSignOut />
               Logout
