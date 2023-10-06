@@ -12,6 +12,14 @@ export default function Home() {
             Welcome to Pijat Online
           </Text>
           <Box display={"flex"} gap={3}>
+            <Link to={"/register"}>
+              <Button colorScheme="teal">Register</Button>
+            </Link>
+            <Link to={"/login"}>
+              <Button colorScheme="teal">Login</Button>
+            </Link>
+            {/* </Box> */}
+            {/* <Box display={"flex"} gap={3} mt={3}> */}
             <Link to={"/cs/dashboard"}>
               <Button colorScheme="teal">Customer</Button>
             </Link>
