@@ -1,10 +1,13 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import SidebarSeller from './Component/SidebarSeller';
 
 export default function SellerDashboard() {
   return (
     <>
       <Box>
-        <Text>Welcome to Pijat Online</Text>
+        <Box>
+        <SidebarSeller />
+        </Box>
       </Box>
     </>
   );
