@@ -21,7 +21,7 @@ export default function SidebarKp() {
           <Link to="/kape/complaint">
             <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
               <GoPeople />
-              Layanan Bantuan
+              Layanan Aduan
             </Button>
           </Link>
           <Link to="/kape/support">
