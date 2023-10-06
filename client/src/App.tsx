@@ -1,13 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
-import SellerDashboard from './pages/SellerDashboard';
+import Seller from './pages/Seller';
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/Seller-Dashboard" element={<SellerDashboard />} />
+        <Route path="/Seller/DashBoard" element={<Seller />} />
+        {/* <Route path="/Seller/Performance" element={<Performance />} />
+        <Route path="/Seller/Complaint-Service" element={<Complaint />} />
+        <Route path="/Seller/Support-Service" element={<Support />} /> */}
       </Routes>
     </>
   );
