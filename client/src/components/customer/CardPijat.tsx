@@ -1,4 +1,5 @@
 import { Box, Button, Card, CardBody, Heading } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 export default function CardPijat() {
   return (
     <>
@@ -7,8 +8,9 @@ export default function CardPijat() {
           <Card>
             <CardBody gap={2} display={"flex"} flexDirection={"column"}>
               <Heading size="sm">Pijat dan Urut</Heading>
-              {/* <Text>Pijat dan urut adalah teknik yang digunakan untuk meredakan ketegangan otot dan meningkatkan relaksasi tubuh.</Text> */}
-              <Button colorScheme="teal">View here</Button>
+              <Link to={"/cs/services/pijat_urut"}>
+                <Button colorScheme="teal">View here</Button>
+              </Link>
             </CardBody>
           </Card>
         </Box>

@@ -2,6 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import DashboardCs from "./pages/customer/dashboardcs";
 import ProfileCS from "./pages/customer/profilecs";
 import Services from "./pages/customer/services";
+import ServiceRefleksi from "./pages/customer/serviceRefleksi";
+import ServicePijatUrut from "./pages/customer/servicePijatUrut";
+import ServiceKretek from "./pages/customer/serviceKretek";
 import Home from "./pages/home";
 import Dashboardkp from "./pages/kape/dashboardkp";
 import Complaint from "./pages/kape/complaint";
@@ -17,6 +20,9 @@ function App() {
         <Route path="/cs/dashboard" element={<DashboardCs />} />
         <Route path="/cs/services" element={<Services />} />
         <Route path="/cs/profile" element={<ProfileCS />} />
+        <Route path="/cs/services/pijat_refleksi" element={<ServiceRefleksi />} />
+        <Route path="/cs/services/pijat_urut" element={<ServicePijatUrut />} />
+        <Route path="/cs/services/pijat_kretek" element={<ServiceKretek />} />
 
         {/* kape */}
         <Route path="/kape/dashboard" element={<Dashboardkp />} />

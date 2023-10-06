@@ -1,4 +1,5 @@
 import { Box, Button, Card, CardBody, Heading } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 export default function CardKretek() {
   return (
     <>
@@ -7,8 +8,9 @@ export default function CardKretek() {
           <Card>
             <CardBody gap={2} display={"flex"} flexDirection={"column"}>
               <Heading size="sm">Pijat Kretek</Heading>
-              {/* <Text>Pijat kretek adalah pengobatan alternatif untuk mengatasi masalah pada tulang, otot, dan persendian</Text> */}
-              <Button colorScheme="teal">View here</Button>
+              <Link to={"/cs/services/pijat_kretek"}>
+                <Button colorScheme="teal">View here</Button>
+              </Link>
             </CardBody>
           </Card>
         </Box>
