@@ -23,6 +23,9 @@ export class Invoice {
 
     @Column()
     district: string
+
+    @Column()
+    status: string
     
     @Column({ default: 0 })
     price: number
@@ -36,23 +39,14 @@ export class Invoice {
     @Column({ default: false })
     isPijetKretek: boolean
     
-    @ManyToOne(() => Seller, (seller) => seller.invoices, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @ManyToOne(() => Seller, (seller) => seller.invoices)
 
     seller: Seller
 
-    @ManyToOne(() => User, (user) => user.invoices, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @ManyToOne(() => User, (user) => user.invoices)
     user: User
 
-    @OneToOne(() => InvoiceHistory, (invoiceHistory) => invoiceHistory.invoice, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @OneToOne(() => InvoiceHistory, (invoiceHistory) => invoiceHistory.invoice)
     invoiceHistory: InvoiceHistory
 
     @CreateDateColumn()

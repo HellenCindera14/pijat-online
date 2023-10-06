@@ -44,6 +44,7 @@ class SellerService {
                 address: reqBody.address,
                 phone: reqBody.phone,
                 password: password,
+                gender: reqBody.gender,
                 isPijetKretek:reqBody.isPijetKretek,
                 isPijetRefleksi: reqBody.isPijetRefleksi,
                 isPijetRelaksasi: reqBody.isPijetRelaksasi,
@@ -61,11 +62,11 @@ class SellerService {
         }
     }
 
-    async update(reqBody?: any): Promise<any> {
+    async update(reqBody?: any, id?:any): Promise<any> {
         try {
             const seller = await this.sellerRepository.findOneOrFail({
                 where: {
-                    id: reqBody.id
+                    id: id
                 }
             })
             
@@ -74,6 +75,7 @@ class SellerService {
             seller.balance = reqBody.balance
             seller.district = reqBody.district
             seller.image = reqBody.image
+            seller.gender = reqBody.gender
             seller.isPijetRefleksi = reqBody.isPijetRefleksi
             seller.isPijetRelaksasi = reqBody.isPijetRelaksasi
             seller.isPijetKretek = reqBody.isPijetKretek

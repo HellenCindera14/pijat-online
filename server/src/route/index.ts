@@ -9,11 +9,14 @@ router.get("/", ( req: Request, res: Response) => {
     res.send("Hello from v1!")
 })
 
-router.get("/seller", SellerController.find)
-router.post("/seller/create", SellerController.create)
-router.patch("/seller/update", SellerController.update)
-router.post("/seller/login", SellerController.login)
+router.get("/kape", SellerController.find)
+router.post("/kape/create", SellerController.create)
+router.patch("/kape/:id", SellerController.update)
+router.post("/kape/login", SellerController.login)
 
 router.get("/invoice", InvoiceController.find)
+router.post("/invoice/create", InvoiceController.create)
+router.patch("/invoice/:id", InvoiceController.update)
+router.delete("/invoice/:id", InvoiceController.delete)
 
 export default router

@@ -22,7 +22,8 @@ class SellerController {
 
     async update(req: Request, res: Response) {
         try {
-            const response = await SellerService.update(req.body)
+            const id = parseInt(req.params.id)
+            const response = await SellerService.update(req.body, id)
             return res.status(200).json(response)
         } catch (err) {
             return res.status(500).json({ error: "Failed register seller!"})

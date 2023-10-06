@@ -22,6 +22,9 @@ export class Seller {
     
     @Column()
     email: string
+
+    @Column()
+    gender: string
     
     @Column()
     phone: string
@@ -41,16 +44,10 @@ export class Seller {
     @Column({ default: false })
     isPijetKretek: boolean
 
-    @OneToMany(() => Invoice, (invoice) => invoice.seller, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @OneToMany(() => Invoice, (invoice) => invoice.seller)
     invoices: Invoice[]
 
-    @OneToMany(() => Rating, (rating) => rating.seller, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @OneToMany(() => Rating, (rating) => rating.seller)
     ratings: Rating[]
 
     @CreateDateColumn()

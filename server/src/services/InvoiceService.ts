@@ -1,10 +1,14 @@
 import { Repository } from "typeorm"
 import { Invoice } from "../entities/Invoices"
 import { AppDataSource } from "../data-source"
+import { InvoiceHistory } from "../entities/InvoiceHistories"
 
 class InvoiceService {
     private readonly invoiceRepository: Repository<Invoice> =
     AppDataSource.getRepository(Invoice)
+
+    private readonly invoiceHistoryRepository: Repository<InvoiceHistory> =
+    AppDataSource.getRepository(InvoiceHistory)
 
     async find() {
         try {
@@ -17,6 +21,86 @@ class InvoiceService {
             return invoice
         } catch (err) {
             throw new Error("Server Error!")
+        }
+    }
+
+    async create(reqBody?: any): Promise<any> {
+        try {
+            const invoice = this.invoiceRepository.create({
+                csEmail: reqBody.csEmail,
+                csAddress: reqBody.csAddress,
+                csName: reqBody.csName,
+                csPhone: reqBody.csPhone,
+                district: reqBody.district,
+                price: reqBody.price,
+                isPijetKretek: reqBody.isPijetKretek,
+                isPijetRefleksi: reqBody.isPijetRefleksi,
+                isPijetRelaksasi: reqBody.isPijetRelaksasi,
+                user: reqBody.user,
+                seller: reqBody.seller,
+            })
+
+            await this.invoiceRepository.save(invoice)
+
+            return {
+                message: "Invoice successfully registered!",
+                invoice: invoice,
+            }
+        } catch (err) {
+            throw new Error("Server Error!")
+        }
+    }
+
+    async update(reqBody?: any, id?: any): Promise<any> {
+        try {
+            const invoice = await this.invoiceRepository.findOneOrFail({
+                where: {
+                    id: id
+                }
+            })
+    
+            invoice.csEmail = reqBody.csEmail
+            invoice.csAddress = reqBody.csAddress
+            invoice.csName = reqBody.csName
+            invoice.csPhone = reqBody.csPhone
+            invoice.district = reqBody.district
+            invoice.price = reqBody.price
+            invoice.status = reqBody.status
+            invoice.isPijetKretek = reqBody.isPijetKretek
+            invoice.isPijetRefleksi = reqBody.isPijetRefleksi
+            invoice.isPijetRelaksasi = reqBody.isPijetRelaksasi
+
+            await this.invoiceRepository.save(invoice)
+
+            const invoiceHistory = this.invoiceHistoryRepository.create({
+                status: invoice.status,
+                isPijetKretek: invoice.isPijetKretek,
+                isPijetRelaksasi: invoice.isPijetRelaksasi,
+                isPijetRefleksi: invoice.isPijetRefleksi,
+                user: invoice.user,
+                seller: invoice.seller,
+            })
+
+            await this.invoiceHistoryRepository.save(invoiceHistory)
+
+            return {
+                message: "Invoice successfully updated!",
+                invoice: invoice,
+            }
+        } catch (err) {
+            throw new Error("Something wrong on the server!")
+        }
+    }
+
+    async delete(id: any): Promise<any> {
+        try {
+            const invoice = await this.invoiceRepository.delete(id)
+            return {
+                message: "Invoice successfully deleted!",
+                invoice: invoice,
+            }
+        } catch (err) {
+            throw new Error("Something wrong on the server!")
         }
     }
 }

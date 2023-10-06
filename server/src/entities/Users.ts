@@ -21,21 +21,18 @@ export class User {
     email: string
 
     @Column()
+    gender: string
+
+    @Column()
     phone: string
 
     @Column({ nullable: true })
     image: string
 
-    @OneToMany(() => Invoice, (invoice) => invoice.user, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @OneToMany(() => Invoice, (invoice) => invoice.user)
     invoices: Invoice[]
 
-    @OneToMany(() => Rating, (rating) => rating.user, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @OneToMany(() => Rating, (rating) => rating.user)
     ratings: Rating[]
     
     @CreateDateColumn()
