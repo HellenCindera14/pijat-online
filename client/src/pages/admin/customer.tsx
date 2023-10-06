@@ -1,4 +1,5 @@
-import { Box, Card, CardBody, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Card, CardBody, Heading, Stack } from "@chakra-ui/react";
+import CardCustomer from "../../components/admin/CardCustomer";
 import LayoutPageAd from "../../layouts/admin/LayoutPageAd";
 
 export default function Customer() {
@@ -11,7 +12,18 @@ export default function Customer() {
               <Heading size="sm">Customer</Heading>
             </Box>
             <CardBody display={"flex"} gap={5} ps={6}>
-              <Text>This Page Customer</Text>
+              <Box w={"50%"}>
+                <Heading size="sm" pb={2}>
+                  Laki - Laki
+                </Heading>
+                <CardCustomer />
+              </Box>
+              <Box w={"50%"}>
+                <Heading size="sm" pb={2}>
+                  Perempuan
+                </Heading>
+                <CardCustomer />
+              </Box>
             </CardBody>
           </Card>
         </Stack>
