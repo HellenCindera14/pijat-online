@@ -1,6 +1,6 @@
-import { API } from './../../../libs/api';
+import { API } from '../../libs/api';
 import { useEffect, useState } from 'react';
-import { IInvoiceHistory } from '../../../interfaces/customer/IInvoice';
+import { IInvoiceHistory } from '../../interfaces/customer/IInvoice';
 export function useInvoice() {
     const [invoiceHistory, setInvoiceHistory] = useState<IInvoiceHistory[]>([])
 

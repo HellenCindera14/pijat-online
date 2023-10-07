@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
-import { ILogin } from './../../../interfaces/customer/IAuth';
+import { ILogin } from '../../interfaces/customer/IAuth';
 import { ChangeEvent, useState } from 'react';
-import { API, setAuthToken } from '../../../libs/api'
+import { API, setAuthToken } from '../../libs/api'
 export function useLogin() {
     const navigate = useNavigate()
     const [form, setForm] = useState<ILogin>({

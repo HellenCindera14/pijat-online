@@ -7,7 +7,11 @@ export function useSeller() {
 
     async function getSellerMale() {
         try {
-            const res = await API.get('/kape/L')
+            const res = await API.get('/kape/L',  {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`
+                }
+            })
             setSellerMale(res.data)
         } catch (err) {
             console.log(err)
@@ -16,7 +20,11 @@ export function useSeller() {
 
     async function getSellerFemale() {
         try {
-            const res = await API.get('/kape/L')
+            const res = await API.get('/kape/P',  {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`
+                }
+            })
             setSellerFemale(res.data)
         } catch (err) {
             console.log(err)

@@ -1,8 +1,10 @@
-import { API } from "./../../../libs/api";
+import { API } from "../../libs/api";
 import { ChangeEvent, useEffect, useState } from "react";
-import { IPijetUrut } from "../../../interfaces/kape/IPijet";
+import { IPijetUrut } from "../../interfaces/kape/IPijet";
+import { useNavigate } from "react-router-dom";
 
 export function usePijetUrut() {
+  const navigate = useNavigate();
   const [pijetUrutLaki, setPijetUrutLaki] = useState<IPijetUrut>();
   const [pijetUrutWanita, setPijetUrutWanita] = useState<IPijetUrut>();
   const [updatePijet, setUpdatePijet] = useState({
@@ -22,7 +24,15 @@ export function usePijetUrut() {
       isOpened: event.target.value === "true",
     });
   }
-
+  async function handleUpdate() {
+    try {
+      const res = await API.post(`/kape/:id`, updatePijet);
+      console.log("ini datanya", res);
+      navigate("kape/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async function getPijetUrutLaki() {
     try {
       const res = await API.get("/kape/male");
@@ -46,5 +56,5 @@ export function usePijetUrut() {
     getPijetUrutWanita();
   }, []);
 
-  return { pijetUrutLaki, pijetUrutWanita, handleChangeUpdateIsOpened };
+  return { pijetUrutLaki, pijetUrutWanita, handleChangeUpdateIsOpened, handleUpdate };
 }

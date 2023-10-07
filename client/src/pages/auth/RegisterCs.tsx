@@ -1,7 +1,7 @@
 import { Box, Button, Center, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import { GoCopilot } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { useRegister } from "../../hooks/customer/auth/useRegister"
+import { useRegister } from "../../hooks/customer/useRegister"
 export default function RegisterCs() {
   const { handleChange, handleRegister } = useRegister()
   return (
