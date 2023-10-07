@@ -1,30 +1,36 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne } from "typeorm"
 import { Seller } from "./Sellers"
 import { User } from "./Users"
 
-@Entity({ name: "ratings" })
-export class Rating {
+@Entity({ name: "complaints" })
+export class Complaint {
 
     @PrimaryGeneratedColumn('uuid')
     id: number
-    
-    @Column()
-    review: string
 
-    @Column({ default: 0 })
-    star: number
+    @Column()
+    subject: string
+
+    @Column()
+    content: string
     
-    @ManyToOne(() => Seller, (seller) => seller.ratings, {
+    @Column({ nullable: true })
+    image: string
+
+    @Column({ default: false })
+    isDone: boolean
+
+    @ManyToOne(() => Seller, (seller) => seller.complaints, {
         onDelete : "SET NULL",
         onUpdate : "CASCADE"
     })
     seller: Seller
 
-    @ManyToOne(() => User, (user) => user.ratings, {
+    @ManyToOne(() => User, (user) => user.complaints, {
         onDelete : "SET NULL",
         onUpdate : "CASCADE"
     })
-    user: User
+    user: Seller
 
     @CreateDateColumn()
     created_at: Date; // Creation date

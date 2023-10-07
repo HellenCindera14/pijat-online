@@ -1,11 +1,13 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
 import { Invoice } from "./Invoices"
 import { Rating } from "./Ratings"
+import { Article } from "./Articles"
+import { Complaint } from "./Complaints"
 
 @Entity({ name: "sellers" })
 export class Seller {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number
 
     @Column()
@@ -44,17 +46,32 @@ export class Seller {
     @Column({ default: false })
     isPijetKretek: boolean
 
+    @Column({ default: false })
+    isOpened: boolean
+
     @OneToMany(() => Invoice, (invoice) => invoice.seller, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
     })
     invoices: Invoice[]
 
     @OneToMany(() => Rating, (rating) => rating.seller, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
     })
     ratings: Rating[]
+
+    @OneToMany(() => Article, (article) => article.seller, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
+    articles: Article[]
+
+    @OneToMany(() => Complaint, (complaint) => complaint.seller, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
+    complaints: Complaint[]
 
     @CreateDateColumn()
     created_at: Date; // Creation date

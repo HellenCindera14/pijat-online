@@ -6,7 +6,7 @@ import { Invoice } from "./Invoices"
 @Entity({ name: "invoicehistories" })
 export class InvoiceHistory {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number
 
     @Column({ default: 0 })
@@ -25,20 +25,20 @@ export class InvoiceHistory {
     isPijetKretek: boolean
     
     @OneToOne(() => Invoice, (invoice) => invoice.invoiceHistory, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
     })
     invoice: Invoice
 
     @ManyToOne(() => Seller, (seller) => seller.invoices, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
     })
     seller: Seller
     
     @ManyToOne(() => User, (user) => user.invoices, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
     })
     user: User
 
