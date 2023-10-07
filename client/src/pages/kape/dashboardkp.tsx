@@ -3,7 +3,7 @@ import CardDashboardSeller from "../../assets/CardDashboardSeller";
 import CardIncomeSeller from "../../assets/CardIncomeSeller";
 import CardTransaksi from "../../components/admin/CardTransaksi";
 import CardDebit from "../../components/kape/CardDebit";
-import CardTopUp from "../../components/kape/CardTopUp";
+// import CardTopUp from "../../components/kape/CardTopUp";
 import LayoutPageKp from "../../layouts/kape/LayoutPageKp";
 import CardFormDebit from "../../components/kape/cardFormDebit";
 
@@ -20,24 +20,23 @@ export default function Dashboardkp() {
             </Box>
 
             <Box ps={6} pt={6}>
-              <CardBody ps={6}>
-                <Box pb={3}>
-                  <Heading size="sm">Kartu</Heading>
-                </Box>
-                <CardDebit />
-              </CardBody>
-
-              <CardBody ps={6}>
-                <Box pb={3}>
-                  <Heading size="sm">Name</Heading>
-                </Box>
+              <CardBody display={"flex"} justifyContent={"space-evenly"} gap={5}>
+                <Box pb={3}>{/* <Heading size="sm">Kartu</Heading> */}</Box>
                 <CardFormDebit />
+                <CardDebit />
+
+                {/* </CardBody>
+
+              <CardBody ps={6}> */}
+                {/* <Box pb={3}>
+                  <Heading size="sm">Name</Heading>
+                </Box> */}
               </CardBody>
             </Box>
-            <CardBody display={"flex"} justifyContent={"space-evenly"} ps={6}>
+            {/* <CardBody display={"flex"} justifyContent={"space-evenly"} ps={6}>
               <CardDebit />
               <CardTopUp />
-            </CardBody>
+            </CardBody> */}
             <Box ps={6} pt={6}>
               <Heading size="sm">Transaksi</Heading>
             </Box>
