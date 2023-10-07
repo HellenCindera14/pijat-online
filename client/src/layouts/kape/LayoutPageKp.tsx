@@ -31,7 +31,7 @@ export default function LayoutPageKp({ children }: LayoutProps) {
           <Box w={"25%"} top={"7.5vh"} position={"fixed"} left={0} h={"100vh"} bgColor={"white"}>
             <SidebarKp />
           </Box>
-          <Box w={"75%"} p={5} bgColor={"whitesmoke"} pos="absolute" left={"25%"} h={"100vh"}>
+          <Box w={"75%"} p={5} bgColor={"whitesmoke"} pos="absolute" left={"25%"}>
             {children}
           </Box>
         </Flex>
