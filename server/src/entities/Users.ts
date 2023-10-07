@@ -14,12 +14,12 @@ export class User {
 
     @Column()
     password: string
+    
+    @Column()
+    email: string
 
     @Column()
     address: string
-
-    @Column()
-    email: string
 
     @Column()
     gender: string
