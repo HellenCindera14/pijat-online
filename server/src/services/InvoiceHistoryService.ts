@@ -8,7 +8,13 @@ class InvoiceHistoryService {
 
     async find() {
         try {
-            const invoiceHistory = await this.InvoiceHistoryRepository.find()
+            const invoiceHistory = await this.InvoiceHistoryRepository.find({
+                relations: ['user', 'seller'],
+                order: {
+                    id: 'DESC'
+                },
+                take: 1
+            })
 
             return invoiceHistory
         } catch (err) {

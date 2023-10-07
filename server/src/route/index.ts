@@ -7,7 +7,7 @@ import auth from '../libs/auth'
 import ComplaintController from '../controllers/ComplaintController'
 import RatingController from '../controllers/RatingController'
 import AddressTemplateController from '../controllers/addressTemplateController'
-import InvoiceHistoryService from '../services/InvoiceHistoryService'
+import InvoiceHistoryController from '../controllers/InvoiceHistoryController'
 
 const router = express.Router()
 
@@ -41,6 +41,6 @@ router.post("/rating/create", RatingController.create)
 router.patch("/rating/:id", RatingController.update)
 router.delete("/rating/:id", RatingController.delete)
 
-router.get('/invoiceHistory', InvoiceHistoryService.find)
+router.get('/invoiceHistory', InvoiceHistoryController.find)
 
 export default router
