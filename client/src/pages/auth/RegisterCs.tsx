@@ -1,7 +1,9 @@
 import { Box, Button, Center, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import { GoCopilot } from "react-icons/go";
 import { Link } from "react-router-dom";
+import { useRegister } from "../../hooks/customer/auth/useRegister"
 export default function RegisterCs() {
+  const { handleChange, handleRegister } = useRegister()
   return (
     <>
       <Center>
@@ -17,7 +19,7 @@ export default function RegisterCs() {
                 <Input
                   type="text"
                   name="name"
-                  //   onChange={handleChangeLogin}
+                    onChange={handleChange}
                 />
               </Box>
               <Box>
@@ -25,7 +27,7 @@ export default function RegisterCs() {
                 <Input
                   type="email"
                   name="email"
-                  //   onChange={handleChangeLogin}
+                    onChange={handleChange}
                 />
               </Box>
               <Box>
@@ -33,7 +35,7 @@ export default function RegisterCs() {
                 <Input
                   type="password"
                   name="password"
-                  //   onChange={handleChangeLogin}
+                    onChange={handleChange}
                 />
               </Box>
             </FormControl>
@@ -48,9 +50,9 @@ export default function RegisterCs() {
               </Link>
             </Box>
             <Text>Lupa Password?</Text>
-            <Link to={"/auth/register"}>
-              <Button colorScheme="teal">Register</Button>
-            </Link>
+            {/* <Link to={"/auth/register"}> */}
+              <Button colorScheme="teal" onClick={handleRegister}>Register</Button>
+            {/* </Link> */}
           </Box>
         </Box>
       </Center>

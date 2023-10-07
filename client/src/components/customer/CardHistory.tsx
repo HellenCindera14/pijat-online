@@ -1,6 +1,7 @@
 import { Avatar, Box, Card, CardHeader, Flex, Heading, Text } from "@chakra-ui/react";
 import { GoStarFill } from "react-icons/go";
-export default function CardKHistory() {
+import { IInvoiceHistory } from "../../interfaces/customer/IInvoice"
+export default function CardKHistory(props: IInvoiceHistory) {
   return (
     <>
       <Box>
@@ -9,9 +10,9 @@ export default function CardKHistory() {
             <CardHeader>
               <Flex>
                 <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                  <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
+                  <Avatar name={props.seller?.name} src="https://bit.ly/sage-adebayo" />
                   <Box>
-                    <Heading size="sm">Segun Adebayo</Heading>
+                    <Heading size="sm">{props.seller?.name}</Heading>
                     <Text>Pijet Urut</Text>
                   </Box>
                 </Flex>

@@ -6,7 +6,7 @@ import { Complaint } from "./Complaints"
 @Entity({ name: "users" })
 export class User {
 
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn()
     id: number
 
     @Column()
@@ -14,12 +14,12 @@ export class User {
 
     @Column()
     password: string
+    
+    @Column()
+    email: string
 
     @Column()
     address: string
-
-    @Column()
-    email: string
 
     @Column()
     gender: string
