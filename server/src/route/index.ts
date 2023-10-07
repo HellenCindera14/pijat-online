@@ -15,7 +15,8 @@ router.get("/", ( req: Request, res: Response) => {
     res.send("Hello from v1!!!!")
 })
 
-router.get("/cs/:gender", UserController.find)
+
+router.get("/cs/check", UserController.check)
 router.post("/register", UserController.register)
 router.post("/login", UserController.login)
 
