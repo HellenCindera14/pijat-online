@@ -12,14 +12,27 @@ export default function Dashboardkp() {
         <Stack mt={"7.5vh"} spacing={4}>
           <Card>
             <Box ps={6} pt={6}>
-              <Heading size="sm">Dashboard</Heading>
+              <Heading size="sm" textAlign={"center"}>
+                Dashboard
+              </Heading>
             </Box>
-            <CardBody ps={6}>
-              <Box pb={3}>
-                <Heading size="sm">Kartu</Heading>
-              </Box>
-              <CardDebit />
-            </CardBody>
+
+            <Box ps={6} pt={6} display={"flex"}>
+              <CardBody ps={6} w={"40%"}>
+                <Box pb={3}>
+                  <Heading size="sm">Kartu</Heading>
+                </Box>
+                <CardDebit />
+              </CardBody>
+
+              <CardBody ps={6} w={"40%"}>
+                <Box pb={3}>
+                  <Heading size="sm">Name</Heading>
+                </Box>
+                <CardDebit/>
+              </CardBody>
+            </Box>
+
             <Box ps={6} pt={6}>
               <Heading size="sm">Transaksi</Heading>
             </Box>

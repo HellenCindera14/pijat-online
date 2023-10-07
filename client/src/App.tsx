@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LoginCs from "./pages/auth/LoginCs";
 import LoginKp from "./pages/auth/LoginKp";
 import RegisterCs from "./pages/auth/RegisterCs";
@@ -26,6 +26,7 @@ import Complaint from "./pages/kape/complaint";
 import Dashboardkp from "./pages/kape/dashboardkp";
 import Support from "./pages/kape/support";
 import Profile from "./pages/kape/profile";
+// import { Routes }  from "react-router-dom";
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
         {/* connection */}
         <Route path="/v1" element={<ConnectionCS />} />
         <Route path="/v2" element={<ConnectionKp />} />
-        {/* Auth */}\
+        {/* Auth */}
         <Route path="/cs/register" element={<RegisterCs />} />
         <Route path="/cs/login" element={<LoginCs />} />
         <Route path="/kape/register" element={<RegisterKp />} />

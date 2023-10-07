@@ -1,26 +1,28 @@
 import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
+    Box,
+    Button,
+    Card,
+    CardBody,
+    CardHeader,
+    FormControl,
+    FormLabel,
+    Heading,
+    Input
 } from "@chakra-ui/react";
+import React from "react";
 
-export default function CardDebit() {
+export default function cardFormDebit() {
   return (
     <>
       <Box w={"40%"}>
         <Card bgColor={"teal.400"} color={"white"}>
-          <CardBody ps={6} padding={"20px"}>
-            <Heading size="sm" textAlign={"center"}>Top Up</Heading>
+          <CardBody ps={6} padding={"50px"}>
+            <Heading size="sm">Top Up</Heading>
             <Box pb={3}>
               <FormLabel>Nama</FormLabel>
             </Box>
-            <FormControl isRequired>
-              <Input name="topup" type="number" placeholder="Jumlah Top Up" />
+            <FormControl id="invoice" isRequired>
+              <Input name="invoice" type="text" />
             </FormControl>
             <FormControl id="upload-proof" isRequired mb={5}>
               <FormLabel>Bukti Transfer</FormLabel>
