@@ -1,7 +1,7 @@
 import { Box, Button, Center, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import { GoCopilot } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { useLogin } from "../../hooks/customer/useLogin"
+import { useLogin } from "../../hooks/customer/auth/useLogin"
 
 export default function LoginCs() {
   const { handleChange, handleLogin } = useLogin()

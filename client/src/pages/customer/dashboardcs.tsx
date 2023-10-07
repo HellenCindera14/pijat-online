@@ -4,7 +4,7 @@ import CardOftenKretek from "../../components/customer/CardOftenKretek";
 import CardOftenPijat from "../../components/customer/CardOftenPijat";
 import CardOftenRefleksi from "../../components/customer/CardOftenRefleksi";
 import CardKHistory from "../../components/customer/CardHistory";
-import { useInvoice } from "../../hooks/customer/useInvoice"
+import { useInvoice } from "../../hooks/customer/invoice/useInvoice"
 
 export default function DashboardCs() {
   const { invoiceHistory } = useInvoice()

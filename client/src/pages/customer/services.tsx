@@ -5,7 +5,7 @@ import CardPijat from "../../components/customer/CardPijat";
 import CardRefleksi from "../../components/customer/CardRefleksi";
 import FormPengaduan from "../../components/kape/LayananAduan";
 import LayoutPage from "../../layouts/customer/LayoutPageCs";
-import { useInvoice } from "../../hooks/customer/useInvoice"
+import { useInvoice } from "../../hooks/customer/invoice/useInvoice"
 
 export default function Services() {
   const { invoiceHistory } = useInvoice()

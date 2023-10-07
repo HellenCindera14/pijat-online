@@ -1,7 +1,7 @@
 import { Box, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
 import LayoutPage from "../../layouts/customer/LayoutPageCs";
 import CardKangPijat from "../../components/customer/CardKangPijat";
-import { usePijetUrut } from "../../hooks/customer/usePijetUrut" 
+import { usePijetUrut } from "../../hooks/customer/pijet/usePijetUrut" 
 
 export default function ServiceRefleksi() {
   const { pijetUrutLaki, pijetUrutWanita } = usePijetUrut()

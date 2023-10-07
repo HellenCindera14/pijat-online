@@ -1,16 +1,60 @@
-import { Button, FormControl, FormLabel, HStack, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Radio, RadioGroup, useDisclosure } from "@chakra-ui/react";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  HStack,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Radio,
+  RadioGroup,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { API } from "../../libs/api";
 
 export default function ModalAction() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const id = ""; // Inisialisasi id dengan nilai awal yang sesuai
+
+  const handleUpdate = () => {
+    API.patch(`/endpoint/${id}`, {
+      name: "",
+      email: "",
+      address: "",
+      district: "",
+      gender: "",
+      phone: "",
+      foto: "",
+    })
+      .then((response) => {
+        console.log("Berhasil memperbarui data:", response.data);
+        onClose();
+      })
+      .catch((error) => {
+        console.error("Gagal memperbarui data:", error);
+      });
+  };
+
   return (
     <>
       <Button onClick={onOpen} size="sm" colorScheme="orange">
-        Action
+        Update
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Update Eannoy</ModalHeader>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={handleUpdate}>
+              Save
+            </Button>
+            <Button onClick={onClose}>Cancel</Button>
+          </ModalFooter>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
@@ -44,13 +88,6 @@ export default function ModalAction() {
               <Input type="file" placeholder="foto" />
             </FormControl>
           </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
-              Save
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
