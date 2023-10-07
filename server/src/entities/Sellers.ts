@@ -12,6 +12,9 @@ export class Seller {
     name: string
 
     @Column()
+    password: string
+
+    @Column()
     address: string
 
     @Column()
@@ -19,6 +22,9 @@ export class Seller {
     
     @Column()
     email: string
+
+    @Column()
+    gender: string
     
     @Column()
     phone: string
@@ -30,27 +36,18 @@ export class Seller {
     balance: string
     
     @Column({ default: false })
-    isPijetUrut: boolean
-
-    @Column({ default: false })
     isPijetRefleksi: boolean
 
     @Column({ default: false })
     isPijetRelaksasi: boolean
 
     @Column({ default: false })
-    isPijetkretek: boolean
+    isPijetKretek: boolean
 
-    @OneToMany(() => Invoice, (invoice) => invoice.seller, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @OneToMany(() => Invoice, (invoice) => invoice.seller)
     invoices: Invoice[]
 
-    @OneToMany(() => Rating, (rating) => rating.seller, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @OneToMany(() => Rating, (rating) => rating.seller)
     ratings: Rating[]
 
     @CreateDateColumn()

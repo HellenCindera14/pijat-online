@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
 
-@Entity({ name: "addressTemplates" })
+@Entity({ name: "addresstemplates" })
 export class AddressTemplate {
 
     @PrimaryGeneratedColumn()

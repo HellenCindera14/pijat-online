@@ -3,7 +3,7 @@ import { Seller } from "./Sellers"
 import { User } from "./Users"
 import { Invoice } from "./Invoices"
 
-@Entity({ name: "invoiceHistories" })
+@Entity({ name: "invoicehistories" })
 export class InvoiceHistory {
 
     @PrimaryGeneratedColumn()
@@ -11,10 +11,10 @@ export class InvoiceHistory {
 
     @Column({ default: 0 })
     price: number
-    
-    @Column({ default: false })
-    isPijetUrut: boolean
 
+    @Column()
+    status: string
+    
     @Column({ default: false })
     isPijetRefleksi: boolean
 
@@ -22,25 +22,16 @@ export class InvoiceHistory {
     isPijetRelaksasi: boolean
 
     @Column({ default: false })
-    isPijetkretek: boolean
+    isPijetKretek: boolean
     
-    @OneToOne(() => Invoice, (invoice) => invoice.invoiceHistory, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @OneToOne(() => Invoice, (invoice) => invoice.invoiceHistory)
     invoice: Invoice
 
-    @ManyToOne(() => Seller, (seller) => seller.invoices, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @ManyToOne(() => Seller, (seller) => seller.invoices)
 
     seller: Seller
     
-    @ManyToOne(() => User, (user) => user.invoices, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @ManyToOne(() => User, (user) => user.invoices)
     user: User
 
     @CreateDateColumn()

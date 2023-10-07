@@ -12,10 +12,16 @@ export class User {
     name: string
 
     @Column()
+    password: string
+
+    @Column()
     address: string
 
     @Column()
     email: string
+
+    @Column()
+    gender: string
 
     @Column()
     phone: string
@@ -23,16 +29,10 @@ export class User {
     @Column({ nullable: true })
     image: string
 
-    @OneToMany(() => Invoice, (invoice) => invoice.user, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @OneToMany(() => Invoice, (invoice) => invoice.user)
     invoices: Invoice[]
 
-    @OneToMany(() => Rating, (rating) => rating.user, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
-    })
+    @OneToMany(() => Rating, (rating) => rating.user)
     ratings: Rating[]
     
     @CreateDateColumn()
