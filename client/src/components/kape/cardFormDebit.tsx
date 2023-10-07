@@ -3,21 +3,21 @@ import {
     Button,
     Card,
     CardBody,
-    CardHeader,
     FormControl,
     FormLabel,
     Heading,
-    Input
+    Input,
+    Text
 } from "@chakra-ui/react";
 import React from "react";
 
-export default function cardFormDebit() {
+export default function CardFormDebit() {
   return (
     <>
       <Box w={"40%"}>
-        <Card bgColor={"teal.400"} color={"white"}>
+        <Card bgColor={"white"} color={"black"}>
           <CardBody ps={6} padding={"50px"}>
-            <Heading size="sm">Top Up</Heading>
+            <Heading size="sm" textAlign={"center"}>Top Up</Heading>
             <Box pb={3}>
               <FormLabel>Nama</FormLabel>
             </Box>
@@ -42,6 +42,8 @@ export default function cardFormDebit() {
             <Button mt={"40px"} type="submit" colorScheme="blue" width={"100%"}>
               Kirim
             </Button>
+            <Text fontSize={"10px"} fontFamily={"monospace"} mt={"5px"}>silahkan isi ke nomor rekening berikut berikut</Text>
+            <Text fontSize={"13px"} fontFamily={"monospace"}>BRI: 308394949948948948. An : Nurhazizah</Text>
           </CardBody>
         </Card>
       </Box>
