@@ -81,6 +81,7 @@ class SellerService {
             seller.isPijetKretek = reqBody.isPijetKretek
             seller.name = reqBody.name
             seller.phone = reqBody.phone
+            seller.balance = reqBody.balance
 
             await this.sellerRepository.save(seller)
 

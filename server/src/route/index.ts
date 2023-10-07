@@ -2,6 +2,7 @@ import * as express from 'express'
 import { Request, Response } from 'express'
 import SellerController from '../controllers/SellerController'
 import InvoiceController from '../controllers/InvoiceController'
+import addressTemplateController from '../controllers/addressTemplateController'
 
 const router = express.Router()
 
@@ -18,5 +19,9 @@ router.get("/invoice", InvoiceController.find)
 router.post("/invoice/create", InvoiceController.create)
 router.patch("/invoice/:id", InvoiceController.update)
 router.delete("/invoice/:id", InvoiceController.delete)
+
+router.get("/addressTemplate", addressTemplateController.find)
+router.post("/addressTemplate/create", addressTemplateController.create)
+router.delete("/addressTemplate/:id", addressTemplateController.delete)
 
 export default router

@@ -2,6 +2,8 @@ import { AppDataSource } from "./data-source"
 import * as express from "express"
 import { Request, Response } from "express"
 import router from "./route"
+import bodyParser = require("body-parser")
+import cors = require('cors')
 require('dotenv').config()
 
 AppDataSource.initialize().then(async () => {
@@ -11,9 +13,9 @@ AppDataSource.initialize().then(async () => {
     // const cors = require('cors')
 
     // app.use(cookieParser())
-    // app.use(cors())
-    // app.use(bodyParser.urlencoded({ extended: true }));
-    // app.use(bodyParser.json());
+    app.use(cors())
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
 
     // const route = express.Router()
 

@@ -29,10 +29,16 @@ export class User {
     @Column({ nullable: true })
     image: string
 
-    @OneToMany(() => Invoice, (invoice) => invoice.user)
+    @OneToMany(() => Invoice, (invoice) => invoice.user, {
+        onDelete : "NO ACTION",
+        onUpdate : "NO ACTION"
+    })
     invoices: Invoice[]
 
-    @OneToMany(() => Rating, (rating) => rating.user)
+    @OneToMany(() => Rating, (rating) => rating.user, {
+        onDelete : "NO ACTION",
+        onUpdate : "NO ACTION"
+    })
     ratings: Rating[]
     
     @CreateDateColumn()
