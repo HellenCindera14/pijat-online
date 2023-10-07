@@ -1,4 +1,4 @@
-import { Avatar, Box, Card, CardHeader, Flex, Heading, Text } from "@chakra-ui/react";
+import { Avatar, Box, Button, Card, CardHeader, Flex, Heading, Text } from "@chakra-ui/react";
 import { GoStarFill } from "react-icons/go";
 
 export default function CardKangPijit() {
@@ -16,12 +16,14 @@ export default function CardKangPijit() {
                     <Text>Pijet Urut</Text>
                   </Box>
                 </Flex>
-                <Box>
+                <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
                   <Flex alignItems={"center"} gap="3">
                     <GoStarFill color="gold" size={20} />
                     <Text>4</Text>
                   </Flex>
-                  <Text>10:00 AM</Text>
+                  <Button size="xs" colorScheme="orange">
+                    Action
+                  </Button>
                 </Box>
               </Flex>
             </CardHeader>

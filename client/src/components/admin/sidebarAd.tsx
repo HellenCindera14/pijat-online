@@ -1,5 +1,5 @@
 import { Button, Flex, Stack } from "@chakra-ui/react";
-import { GoCopilot, GoHome, GoPeople, GoSignOut } from "react-icons/go";
+import { GoHome, GoPeople, GoSignOut } from "react-icons/go";
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 export default function SidebarAd() {
@@ -31,12 +31,12 @@ export default function SidebarAd() {
               Layanan Aduan
             </Button>
           </Link>
-          <Link to="/admin/support">
+          {/* <Link to="https://wa.me/085742981987" target="_blank">
             <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
               <GoCopilot />
               Support Service
             </Button>
-          </Link>
+          </Link> */}
         </Stack>
         <Stack px={4} pb={"7.5vh"}>
           <Link to="/">

@@ -1,5 +1,5 @@
 import { Button, Flex, Stack } from "@chakra-ui/react";
-import { GoHome, GoPerson, GoSignOut, GoStack } from "react-icons/go";
+import { GoCopilot, GoHome, GoPerson, GoSignOut, GoStack } from "react-icons/go";
 import { Link } from "react-router-dom";
 export default function SidebarCs() {
   return (
@@ -22,6 +22,12 @@ export default function SidebarCs() {
             <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
               <GoPerson />
               Profile
+            </Button>
+          </Link>
+          <Link to="https://wa.me/085742981987" target="_blank">
+            <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
+              <GoCopilot />
+              Support Service
             </Button>
           </Link>
         </Stack>
