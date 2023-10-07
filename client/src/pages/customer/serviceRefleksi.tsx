@@ -2,9 +2,12 @@ import { Box, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra
 import LayoutPage from "../../layouts/customer/LayoutPageCs";
 import CardKangPijat from "../../components/customer/CardKangPijat";
 import { usePijetUrut } from "../../hooks/customer/usePijetUrut" 
+import { useState } from "react";
 
 export default function ServiceRefleksi() {
-  const { pijetUrutLaki, pijetUrutWanita } = usePijetUrut()
+  const [query, setQuery] = useState('');
+
+  const { pijetUrutLaki, pijetUrutWanita } = usePijetUrut(query)
 
   return (
     <>
@@ -17,7 +20,7 @@ export default function ServiceRefleksi() {
             <CardBody>
               <FormControl pb={3}>
                 {/* <FormLabel>Nama</FormLabel> */}
-                <Input type="text" placeholder="Cari Lokasi Kecamatan" />
+                <Input type="text" placeholder="Cari Lokasi Kecamatan" value={query} onChange={(e) => setQuery(e.target.value)}/>
               </FormControl>
             </CardBody>
           </Card>

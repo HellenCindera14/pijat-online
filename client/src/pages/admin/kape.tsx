@@ -2,9 +2,12 @@ import { Box, Button, Card, CardBody, FormControl, Heading, Input, Stack } from 
 import CardPijat from "../../components/admin/CardPijat";
 import LayoutPageAd from "../../layouts/admin/LayoutPageAd";
 import { useSeller } from "../../hooks/admin/useSeller"
+import { useState } from "react";
 
 export default function Kape() {
-  const { sellerMale, sellerFemale } = useSeller()
+  const [query, setQuery] = useState('');
+
+  const { sellerMale, sellerFemale } = useSeller(query)
   return (
     <>
       <LayoutPageAd>
@@ -13,8 +16,7 @@ export default function Kape() {
             <Box px={6} pt={6} display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
               <Heading size="sm">Kang Pijat</Heading>
               <FormControl w={"48%"} display={"flex"} gap={2}>
-                <Input type="text" placeholder="Cari Kang Pijat" />
-                <Button colorScheme="teal">Search</Button>
+                <Input type="text" placeholder="Cari Kang Pijat" value={query} onChange={(e) => setQuery(e.target.value)} />
               </FormControl>
             </Box>
             <CardBody display={"flex"} gap={5}>
