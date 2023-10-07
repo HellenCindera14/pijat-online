@@ -25,11 +25,11 @@ class UserService {
 
       const users = this.userRepository.create({
         name: reqBody.name,
-        email: reqBody.email,
         password: password,
-        // address: reqBody.address,
-        // phone: reqBody.phone,
-        // image: reqBody.image,
+        address: reqBody.address,
+        email: reqBody.email,
+        phone: reqBody.phone,
+        image: reqBody.image,
       });
 
       await this.userRepository.save(users);
