@@ -7,7 +7,7 @@ import { Complaint } from "./Complaints"
 @Entity({ name: "sellers" })
 export class Seller {
 
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn()
     id: number
 
     @Column()
