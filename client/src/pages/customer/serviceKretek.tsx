@@ -1,8 +1,18 @@
-import { Box, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  CardBody,
+  FormControl,
+  Heading,
+  Input,
+  Stack,
+} from "@chakra-ui/react";
 import CardKangPijat from "../../components/customer/CardKangPijat";
 import LayoutPage from "../../layouts/customer/LayoutPageCs";
+import { usePijetUrut } from "../../hooks/customer/pijet/usePijetUrut";
 
 export default function ServiceKretek() {
+  const { pijetUrutLaki, pijetUrutWanita } = usePijetUrut();
   return (
     <>
       <LayoutPage>
@@ -27,13 +37,37 @@ export default function ServiceKretek() {
                 <Heading size="sm" pb={2}>
                   Laki - Laki
                 </Heading>
-                <CardKangPijat />
+                {pijetUrutLaki.map((data) => (
+                  <CardKangPijat
+                    key={data.id}
+                    id={data.id}
+                    phone={data.phone}
+                    image={data.image}
+                    name={data.name}
+                    gender={data.gender}
+                    email={data.email}
+                    district={data.district}
+                    address={data.address}
+                  />
+                ))}
               </Box>
               <Box w={"50%"} ps={6}>
                 <Heading size="sm" pb={2}>
                   Perempuan
                 </Heading>
-                <CardKangPijat />
+                {pijetUrutWanita.map((data) => (
+                  <CardKangPijat
+                    key={data.id}
+                    id={data.id}
+                    phone={data.phone}
+                    image={data.image}
+                    name={data.name}
+                    gender={data.gender}
+                    email={data.email}
+                    district={data.district}
+                    address={data.address}
+                  />
+                ))}
               </Box>
             </CardBody>
           </Card>

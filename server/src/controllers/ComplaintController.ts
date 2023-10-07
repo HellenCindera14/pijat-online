@@ -13,7 +13,8 @@ class ComplaintController {
 
     async create(req: Request, res: Response) {
         try {
-            const response = await ComplaintService.create(req.body)
+            const loginSession = res.locals.loginSession
+            const response = await ComplaintService.create(req.body, loginSession)
             return res.status(200).json(response)
         } catch (err) {
             return res.status(500).json({ error: "Cannot create data complaint!"})

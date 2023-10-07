@@ -22,7 +22,8 @@
       "jsonwebtoken": "^9.0.2",
       "mysql": "^2.14.1",
       "reflect-metadata": "^0.1.13",
-      "typeorm": "0.3.17"
+      "typeorm": "0.3.17",
+      "uuid": "^9.0.1"
    },
    "scripts": {
       "start": "ts-node src/index.ts",

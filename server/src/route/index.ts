@@ -2,11 +2,12 @@ import * as express from 'express'
 import { Request, Response } from 'express'
 import SellerController from '../controllers/SellerController'
 import InvoiceController from '../controllers/InvoiceController'
-import AddressTemplateController from '../controllers/AddressTemplateController'
 import UserController from '../controllers/UserController'
 import auth from '../libs/auth'
 import ComplaintController from '../controllers/ComplaintController'
 import RatingController from '../controllers/RatingController'
+import AddressTemplateController from '../controllers/addressTemplateController'
+import InvoiceHistoryController from '../controllers/InvoiceHistoryController'
 
 const router = express.Router()
 
@@ -14,10 +15,11 @@ router.get("/", ( req: Request, res: Response) => {
     res.send("Hello from v1!!!!")
 })
 
+router.get("/cs/:gender", auth, UserController.find)
 router.post("/register", UserController.register)
 router.post("/login", UserController.login)
 
-router.get("/kape", auth, SellerController.find)
+router.get("/kape/:gender", auth, SellerController.find)
 router.post("/kape/create", SellerController.create)
 router.patch("/kape/:id", auth, SellerController.update)
 router.post("/kape/login", SellerController.login)
@@ -39,5 +41,7 @@ router.get("/rating", auth, RatingController.find)
 router.post("/rating/create", auth, RatingController.create)
 router.patch("/rating/:id", auth, RatingController.update)
 router.delete("/rating/:id", auth, RatingController.delete)
+
+router.get('/invoiceHistory', auth, InvoiceHistoryController.find)
 
 export default router
