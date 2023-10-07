@@ -1,8 +1,10 @@
 import { Box, Button, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
 import CardPijat from "../../components/admin/CardPijat";
 import LayoutPageAd from "../../layouts/admin/LayoutPageAd";
+import { useSeller } from "../../hooks/admin/useSeller"
 
 export default function Kape() {
+  const { sellerMale, sellerFemale } = useSeller()
   return (
     <>
       <LayoutPageAd>
@@ -20,13 +22,17 @@ export default function Kape() {
                 <Heading size="sm" pb={2}>
                   Laki - Laki
                 </Heading>
-                <CardPijat />
+                {sellerMale.map((data) => (
+                  <CardPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address}/>
+                ))}
               </Box>
               <Box w={"50%"}>
                 <Heading size="sm" pb={2}>
                   Perempuan
                 </Heading>
-                <CardPijat />
+                {sellerFemale.map((data) => (
+                  <CardPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address}/>
+                ))}
               </Box>
             </CardBody>
           </Card>

@@ -1,8 +1,10 @@
 import { Box, Button, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
 import CardCustomer from "../../components/admin/CardCustomer";
 import LayoutPageAd from "../../layouts/admin/LayoutPageAd";
+import { useCustomers } from "../../hooks/admin/useCustomers"
 
 export default function Customer() {
+  const { customerFemale, customerMale } = useCustomers()
   return (
     <>
       <LayoutPageAd>
@@ -20,13 +22,17 @@ export default function Customer() {
                 <Heading size="sm" pb={2}>
                   Laki - Laki
                 </Heading>
-                <CardCustomer />
+                {customerMale.map((data) => (
+                  <CardCustomer key={data.id} address={data.address} email={data.email} gender={data.gender} id={data.id} image={data.image} name={data.name} phone={data.phone} />
+                ))}
               </Box>
               <Box w={"50%"}>
                 <Heading size="sm" pb={2}>
                   Perempuan
                 </Heading>
-                <CardCustomer />
+                {customerFemale.map((data) => (
+                  <CardCustomer key={data.id} address={data.address} email={data.email} gender={data.gender} id={data.id} image={data.image} name={data.name} phone={data.phone} />
+                ))}
               </Box>
             </CardBody>
           </Card>
