@@ -6,7 +6,7 @@ import { InvoiceHistory } from "./InvoiceHistories"
 @Entity({ name: "invoices" })
 export class Invoice {
 
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn()
     id: number
 
     @Column()

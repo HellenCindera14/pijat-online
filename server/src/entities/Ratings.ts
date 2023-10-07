@@ -5,7 +5,7 @@ import { User } from "./Users"
 @Entity({ name: "ratings" })
 export class Rating {
 
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn()
     id: number
     
     @Column()
