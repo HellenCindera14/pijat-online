@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
-import { IRegister } from '../../../interfaces/customer/IAuth';
-import { API } from '../../../libs/api';
 import { useNavigate } from 'react-router';
+import { API } from '../../libs/api';
+import { IRegister } from '../../interfaces/customer/IAuth';
 export function useRegister() {
     const navigate = useNavigate()
     const [form, setForm] = useState<IRegister>({
