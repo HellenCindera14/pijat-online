@@ -2,6 +2,7 @@ import { AppDataSource } from "./data-source"
 import * as express from "express"
 import { Request, Response } from "express"
 import router from "./route"
+require('dotenv').config()
 
 AppDataSource.initialize().then(async () => {
 
