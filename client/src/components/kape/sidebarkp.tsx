@@ -24,16 +24,16 @@ export default function SidebarKp() {
               Layanan Aduan
             </Button>
           </Link>
-          <Link to="/kape/support">
-            <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
-              <GoCopilot />
-              Support Service
-            </Button>
-          </Link>
           <Link to="/kape/profile">
             <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
               <GoPerson />
               Profile
+            </Button>
+          </Link>
+          <Link to="https://wa.me/085742981987" target="_blank">
+            <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
+              <GoCopilot />
+              Support Service
             </Button>
           </Link>
         </Stack>
