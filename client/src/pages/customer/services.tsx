@@ -5,8 +5,10 @@ import CardPijat from "../../components/customer/CardPijat";
 import CardRefleksi from "../../components/customer/CardRefleksi";
 import FormPengaduan from "../../components/kape/LayananAduan";
 import LayoutPage from "../../layouts/customer/LayoutPageCs";
+import { useInvoice } from "../../hooks/customer/invoice/useInvoice"
 
 export default function Services() {
+  const { invoiceHistory } = useInvoice()
   return (
     <>
       <LayoutPage>
@@ -31,7 +33,9 @@ export default function Services() {
               <Heading size="sm">Riwayat</Heading>
             </Box>
             <CardBody display={"flex"} gap={5} ps={6}>
-              <CardHistory />
+              {invoiceHistory.map((data) => (
+                <CardHistory status={data.status} key={data.id} seller={data?.seller} user={data?.user} id={data.id}/>
+              ))}
             </CardBody>
           </Card>
         </Stack>
