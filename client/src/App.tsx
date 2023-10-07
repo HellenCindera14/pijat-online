@@ -8,6 +8,7 @@ import DashboardAd from "./pages/admin/dashboardAd";
 import Customer from "./pages/admin/customer";
 import Kape from "./pages/admin/kape";
 import ComplaintAd from "./pages/admin/complaintAd";
+import DetailComplaint from "./pages/admin/detailComplaint";
 import SupportAd from "./pages/admin/supportAd";
 import KpPijatRefleksi from "./pages/admin/KpPijatRefleksi";
 import KpPijatUrut from "./pages/admin/KpPijatUrut";
@@ -22,7 +23,6 @@ import Home from "./pages/home";
 import ConnectionCS from "./pages/connectionCs";
 import ConnectionKp from "./pages/connectionKp";
 import Performance from "./pages/kape/Performance";
-import Complaint from "./pages/kape/complaint";
 import Dashboardkp from "./pages/kape/dashboardkp";
 import Support from "./pages/kape/support";
 import Profile from "./pages/kape/profile";
@@ -48,6 +48,7 @@ function App() {
         <Route path="/admin/kape" element={<Kape />} />
         <Route path="/admin/kape/edit" element={<KpFormEdit />} />
         <Route path="/admin/complaint" element={<ComplaintAd />} />
+        <Route path="/admin/detail-complaint/" element={<DetailComplaint />} />
         <Route path="/admin/support" element={<SupportAd />} />
         <Route path="/admin/pijat-urut" element={<KpPijatUrut />} />
         <Route path="/admin/pijat-kretek" element={<KpPijatKretek />} />
@@ -62,7 +63,6 @@ function App() {
         {/* kape */}
         <Route path="/kape/dashboard" element={<Dashboardkp />} />
         <Route path="/kape/performance" element={<Performance />} />
-        <Route path="/kape/complaint" element={<Complaint />} />
         <Route path="/kape/support" element={<Support />} />
         <Route path="/kape/profile" element={<Profile />} />
       </Routes>

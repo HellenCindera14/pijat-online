@@ -1,7 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
 import { Seller } from "./Sellers"
 import { User } from "./Users"
-import { InvoiceHistory } from "./InvoiceHistories"
 
 @Entity({ name: "ratings" })
 export class Rating {
@@ -12,14 +11,19 @@ export class Rating {
     @Column()
     review: string
 
-    @Column()
-    start: number
+    @Column({ default: 0 })
+    star: number
     
-    @ManyToOne(() => Seller, (seller) => seller.ratings)
-
+    @ManyToOne(() => Seller, (seller) => seller.ratings, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
     seller: Seller
 
-    @ManyToOne(() => User, (user) => user.ratings)
+    @ManyToOne(() => User, (user) => user.ratings, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
     user: User
 
     @CreateDateColumn()

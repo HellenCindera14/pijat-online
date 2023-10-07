@@ -1,8 +1,8 @@
 import { Avatar, Box, Button, Card, CardHeader, Flex, Heading, Text } from "@chakra-ui/react";
-import React from "react";
-import { Link } from "react-router-dom";
+import ModalAction from "./ModalAction";
+import { ISeller } from "../../interfaces/admin/ISeller"
 
-export default function CardPijat() {
+export default function CardPijat(props: ISeller) {
   return (
     <>
       <Box>
@@ -11,18 +11,14 @@ export default function CardPijat() {
             <CardHeader>
               <Flex alignItems={"center"}>
                 <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                  <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
+                  <Avatar name={props.name} src="https://bit.ly/sage-adebayo" />
                   <Box>
-                    <Heading size="sm">Segun Adebayo</Heading>
-                    <Text>segun@goservice.com</Text>
+                    <Heading size="sm">{props.name}</Heading>
+                    <Text>{props.email}</Text>
                   </Box>
                 </Flex>
                 <Box display={"flex"} gap={2}>
-                  <Link to={"/admin/kape/edit"}>
-                    <Button size="sm" colorScheme="orange">
-                      Action
-                    </Button>
-                  </Link>
+                  <ModalAction />
                   <Button size="sm" colorScheme="red">
                     Delete
                   </Button>

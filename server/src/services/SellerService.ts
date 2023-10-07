@@ -8,12 +8,16 @@ class SellerService {
     private readonly sellerRepository: Repository<Seller> =
     AppDataSource.getRepository(Seller)
 
-    async find() {
+    async find(gender?: any): Promise<any> {
         try {
             const seller = await this.sellerRepository.find({
+                where: {
+                    gender: gender,
+                    isOpened: true,
+                },
                 order: {
                     id: "DESC",
-                }
+                },
             })
 
             return seller
@@ -81,6 +85,7 @@ class SellerService {
             seller.isPijetKretek = reqBody.isPijetKretek
             seller.name = reqBody.name
             seller.phone = reqBody.phone
+            seller.balance = reqBody.balance
 
             await this.sellerRepository.save(seller)
 

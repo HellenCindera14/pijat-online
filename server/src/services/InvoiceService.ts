@@ -2,6 +2,7 @@ import { Repository } from "typeorm"
 import { Invoice } from "../entities/Invoices"
 import { AppDataSource } from "../data-source"
 import { InvoiceHistory } from "../entities/InvoiceHistories"
+import { Seller } from "../entities/Sellers"
 
 class InvoiceService {
     private readonly invoiceRepository: Repository<Invoice> =
@@ -9,6 +10,9 @@ class InvoiceService {
 
     private readonly invoiceHistoryRepository: Repository<InvoiceHistory> =
     AppDataSource.getRepository(InvoiceHistory)
+
+    private readonly sellerRepository: Repository<Seller> =
+    AppDataSource.getRepository(Seller)
 
     async find() {
         try {
@@ -33,6 +37,7 @@ class InvoiceService {
                 csPhone: reqBody.csPhone,
                 district: reqBody.district,
                 price: reqBody.price,
+                status: reqBody.status,
                 isPijetKretek: reqBody.isPijetKretek,
                 isPijetRefleksi: reqBody.isPijetRefleksi,
                 isPijetRelaksasi: reqBody.isPijetRelaksasi,
@@ -41,6 +46,16 @@ class InvoiceService {
             })
 
             await this.invoiceRepository.save(invoice)
+
+            const seller = await this.sellerRepository.findOne({
+                where: {
+                    id: reqBody.seller
+                }
+            })
+
+            seller.balance = seller.balance - 1000
+
+            await this.sellerRepository.save(seller)
 
             return {
                 message: "Invoice successfully registered!",
@@ -74,6 +89,7 @@ class InvoiceService {
 
             const invoiceHistory = this.invoiceHistoryRepository.create({
                 status: invoice.status,
+                price: invoice.price,
                 isPijetKretek: invoice.isPijetKretek,
                 isPijetRelaksasi: invoice.isPijetRelaksasi,
                 isPijetRefleksi: invoice.isPijetRefleksi,

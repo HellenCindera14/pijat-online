@@ -27,9 +27,9 @@ export default function IncomeChart() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Judulnya Cooegggg</ModalHeader>
+          <ModalHeader>Income</ModalHeader>
           <ModalBody>
-            <Text>Jancok</Text>
+            <Text>ini dia</Text>
           </ModalBody>
         </ModalContent>
       </Modal>

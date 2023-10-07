@@ -2,7 +2,8 @@ import { Box, Card, CardBody, Heading, Stack } from "@chakra-ui/react";
 import CardDashboardSeller from "../../assets/CardDashboardSeller";
 import CardIncomeSeller from "../../assets/CardIncomeSeller";
 import CardTransaksi from "../../components/admin/CardTransaksi";
-import CardDebit from "../../components/kape/cardDebit";
+import CardDebit from "../../components/kape/CardDebit";
+import CardTopUp from "../../components/kape/CardTopUp";
 import LayoutPageKp from "../../layouts/kape/LayoutPageKp";
 import CardFormDebit from "../../components/kape/cardFormDebit";
 
@@ -30,10 +31,13 @@ export default function Dashboardkp() {
                 <Box pb={3}>
                   <Heading size="sm">Name</Heading>
                 </Box>
-                <CardFormDebit/>
+                <CardFormDebit />
               </CardBody>
             </Box>
-
+            <CardBody display={"flex"} justifyContent={"space-evenly"} ps={6}>
+              <CardDebit />
+              <CardTopUp />
+            </CardBody>
             <Box ps={6} pt={6}>
               <Heading size="sm">Transaksi</Heading>
             </Box>

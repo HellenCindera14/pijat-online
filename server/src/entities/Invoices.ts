@@ -39,14 +39,23 @@ export class Invoice {
     @Column({ default: false })
     isPijetKretek: boolean
     
-    @ManyToOne(() => Seller, (seller) => seller.invoices)
+    @ManyToOne(() => Seller, (seller) => seller.invoices, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
 
     seller: Seller
 
-    @ManyToOne(() => User, (user) => user.invoices)
+    @ManyToOne(() => User, (user) => user.invoices, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
     user: User
 
-    @OneToOne(() => InvoiceHistory, (invoiceHistory) => invoiceHistory.invoice)
+    @OneToOne(() => InvoiceHistory, (invoiceHistory) => invoiceHistory.invoice, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
     invoiceHistory: InvoiceHistory
 
     @CreateDateColumn()

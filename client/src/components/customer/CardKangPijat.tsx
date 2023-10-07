@@ -1,7 +1,8 @@
 import { Avatar, Box, Button, Card, CardHeader, Flex, Heading, Text } from "@chakra-ui/react";
 import { GoStarFill } from "react-icons/go";
+import { IPijetUrut } from "../../interfaces/customer/IPijet";
 
-export default function CardKangPijit() {
+export default function CardKangPijit(props: IPijetUrut) {
   return (
     <>
       <Box>
@@ -10,9 +11,9 @@ export default function CardKangPijit() {
             <CardHeader>
               <Flex>
                 <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                  <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
+                  <Avatar name={props.name} src="https://bit.ly/sage-adebayo" />
                   <Box>
-                    <Heading size="sm">Segun Adebayo</Heading>
+                    <Heading size="sm">{props.name}</Heading>
                     <Text>Pijet Urut</Text>
                   </Box>
                 </Flex>

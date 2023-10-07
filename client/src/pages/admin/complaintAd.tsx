@@ -1,4 +1,5 @@
-import { Box, Card, CardBody, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Card, CardBody, Heading, Stack } from "@chakra-ui/react";
+import CardComplaint from "../../components/admin/CardComplaint";
 import LayoutPageAd from "../../layouts/admin/LayoutPageAd";
 
 export default function CompaintAd() {
@@ -10,8 +11,19 @@ export default function CompaintAd() {
             <Box ps={6} pt={6}>
               <Heading size="sm">Layanan Aduan</Heading>
             </Box>
-            <CardBody display={"flex"} gap={5} ps={6}>
-              <Text>This Page Complaint</Text>
+            <CardBody display={"flex"} justifyContent={"space-between"} ps={6}>
+              <Box w={"45%"}>
+                <Heading size="sm" pb={2}>
+                  Kang Pijat
+                </Heading>
+                <CardComplaint />
+              </Box>
+              <Box w={"45%"}>
+                <Heading size="sm" pb={2}>
+                  Customer
+                </Heading>
+                <CardComplaint />
+              </Box>
             </CardBody>
           </Card>
         </Stack>

@@ -1,22 +1,39 @@
-import { Box, Card, CardBody, Heading, Stack } from "@chakra-ui/react";
+import { Box, Button, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
+import CardPijat from "../../components/admin/CardPijat";
 import LayoutPageAd from "../../layouts/admin/LayoutPageAd";
-import CardKangPijit from "../../components/admin/CardKangPijat";
-import CardKangKretek from "../../components/admin/CardKangKretek";
-import CardKangRefleksi from "../../components/admin/CardKangRefleksi";
+import { useSeller } from "../../hooks/admin/useSeller"
 
 export default function Kape() {
+  const { sellerMale, sellerFemale } = useSeller()
   return (
     <>
       <LayoutPageAd>
         <Stack mt={"7.5vh"} spacing={4}>
           <Card>
-            <Box ps={6} pt={6}>
+            <Box px={6} pt={6} display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
               <Heading size="sm">Kang Pijat</Heading>
+              <FormControl w={"48%"} display={"flex"} gap={2}>
+                <Input type="text" placeholder="Cari Kang Pijat" />
+                <Button colorScheme="teal">Search</Button>
+              </FormControl>
             </Box>
-            <CardBody display={"flex"} gap={5} ps={6}>
-              <CardKangPijit />
-              <CardKangKretek />
-              <CardKangRefleksi />
+            <CardBody display={"flex"} gap={5}>
+              <Box w={"50%"}>
+                <Heading size="sm" pb={2}>
+                  Laki - Laki
+                </Heading>
+                {sellerMale.map((data) => (
+                  <CardPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address}/>
+                ))}
+              </Box>
+              <Box w={"50%"}>
+                <Heading size="sm" pb={2}>
+                  Perempuan
+                </Heading>
+                {sellerFemale.map((data) => (
+                  <CardPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address}/>
+                ))}
+              </Box>
             </CardBody>
           </Card>
         </Stack>
