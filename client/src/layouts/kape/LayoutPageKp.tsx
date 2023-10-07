@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex } from "@chakra-ui/react";
+import { Avatar, Box, Flex, FormControl, FormLabel, Switch } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import SidebarKp from "../../components/kape/sidebarkp";
 
@@ -25,7 +25,13 @@ export default function LayoutPageKp({ children }: LayoutProps) {
           px={10}
         >
           <Box>{""}</Box>
-          <Avatar size="sm" name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+          <Box display="flex" alignItems="center" gap={5}>
+            <FormControl display="flex" alignItems="center">
+              <FormLabel mb="0">Aktifikasi Web?</FormLabel>
+              <Switch id="email-alerts" />
+            </FormControl>
+            <Avatar size="sm" name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+          </Box>
         </Box>
         <Flex justify={"center"} minHeight={"100vh"}>
           <Box w={"25%"} top={"7.5vh"} position={"fixed"} left={0} h={"100vh"} bgColor={"white"}>
