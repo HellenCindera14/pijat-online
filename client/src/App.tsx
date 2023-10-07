@@ -9,6 +9,10 @@ import Customer from "./pages/admin/customer";
 import Kape from "./pages/admin/kape";
 import ComplaintAd from "./pages/admin/complaintAd";
 import SupportAd from "./pages/admin/supportAd";
+import KpPijatRefleksi from "./pages/admin/KpPijatRefleksi";
+import KpPijatUrut from "./pages/admin/KpPijatUrut";
+import KpPijatKretek from "./pages/admin/KpPijatKretek";
+import KpFormEdit from "./pages/admin/KpFormEdit";
 import ProfileCS from "./pages/customer/profilecs";
 import ServiceKretek from "./pages/customer/serviceKretek";
 import ServicePijatUrut from "./pages/customer/servicePijatUrut";
@@ -21,6 +25,7 @@ import Performance from "./pages/kape/Performance";
 import Complaint from "./pages/kape/complaint";
 import Dashboardkp from "./pages/kape/dashboardkp";
 import Support from "./pages/kape/support";
+import Profile from "./pages/kape/profile";
 
 function App() {
   return (
@@ -40,8 +45,12 @@ function App() {
         <Route path="/admin/dashboard" element={<DashboardAd />} />
         <Route path="/admin/cs" element={<Customer />} />
         <Route path="/admin/kape" element={<Kape />} />
+        <Route path="/admin/kape/edit" element={<KpFormEdit />} />
         <Route path="/admin/complaint" element={<ComplaintAd />} />
         <Route path="/admin/support" element={<SupportAd />} />
+        <Route path="/admin/pijat-urut" element={<KpPijatUrut />} />
+        <Route path="/admin/pijat-kretek" element={<KpPijatKretek />} />
+        <Route path="/admin/pijat-refleksi" element={<KpPijatRefleksi />} />
         {/* customet */}
         <Route path="/cs/dashboard" element={<DashboardCs />} />
         <Route path="/cs/services" element={<Services />} />
@@ -53,7 +62,8 @@ function App() {
         <Route path="/kape/dashboard" element={<Dashboardkp />} />
         <Route path="/kape/performance" element={<Performance />} />
         <Route path="/kape/complaint" element={<Complaint />} />
-        <Route path="/kape/Support" element={<Support />} />
+        <Route path="/kape/support" element={<Support />} />
+        <Route path="/kape/profile" element={<Profile />} />
       </Routes>
     </>
   );

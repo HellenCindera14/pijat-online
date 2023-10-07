@@ -1,5 +1,5 @@
 import { Button, Flex, Stack } from "@chakra-ui/react";
-import { GoCopilot, GoGraph, GoHome, GoPeople, GoSignOut } from "react-icons/go";
+import { GoCopilot, GoGraph, GoHome, GoPeople, GoPerson, GoSignOut } from "react-icons/go";
 import { Link } from "react-router-dom";
 export default function SidebarKp() {
   return (
@@ -28,6 +28,12 @@ export default function SidebarKp() {
             <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
               <GoCopilot />
               Support Service
+            </Button>
+          </Link>
+          <Link to="/kape/profile">
+            <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
+              <GoPerson />
+              Profile
             </Button>
           </Link>
         </Stack>
