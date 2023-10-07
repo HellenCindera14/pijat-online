@@ -4,7 +4,8 @@ import SellerService from "../services/SellerService";
 class SellerController {
     async find(req: Request, res: Response) {
         try {
-            const response = await SellerService.find()
+            const gender = req.params.gender
+            const response = await SellerService.find(gender)
             return res.status(200).json(response)
         } catch (err) {
             return res.status(500).json({ error: "Cannot get data seller!"})
