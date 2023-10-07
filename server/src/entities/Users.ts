@@ -1,11 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
 import { Invoice } from "./Invoices"
 import { Rating } from "./Ratings"
+import { Complaint } from "./Complaints"
 
 @Entity({ name: "users" })
 export class User {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number
 
     @Column()
@@ -30,16 +31,22 @@ export class User {
     image: string
 
     @OneToMany(() => Invoice, (invoice) => invoice.user, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
     })
     invoices: Invoice[]
 
     @OneToMany(() => Rating, (rating) => rating.user, {
-        onDelete : "NO ACTION",
-        onUpdate : "NO ACTION"
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
     })
     ratings: Rating[]
+
+    @OneToMany(() => Complaint, (complaint) => complaint.user, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
+    complaints: Complaint[]
     
     @CreateDateColumn()
     created_at: Date; // Creation date
