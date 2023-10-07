@@ -5,8 +5,31 @@ import * as jwt from "jsonwebtoken";
 import { User } from "../entities/Users";
 
 class UserService {
-  private readonly userRepository: Repository<User> =
-    AppDataSource.getRepository(User);
+  private readonly userRepository: Repository<User> = AppDataSource.getRepository(User);
+
+  async check(loginSession: any): Promise<any> {
+    try {
+      const user = await this.userRepository.findOne({
+        where: {
+          id: loginSession.user.id,
+        },
+      });
+
+      return {
+        message: "Token is valid!",
+        user: {
+          id: user.id,
+          name: user.name,
+          address: user.address,
+          email: user.email,
+          phone: user.phone,
+          image: user.image,
+        },
+      };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 
   async register(reqBody?: any): Promise<any> {
     try {
@@ -43,52 +66,38 @@ class UserService {
     }
   }
 
-  async login(reqBody?: any): Promise<any> {
-    console.log("masuk1");
+  async login(reqBody: any): Promise<any> {
     try {
-      console.log("masuk2");
-
-      const users = await this.userRepository.findOne({
+      const user = await this.userRepository.findOne({
         where: {
           email: reqBody.email,
         },
         select: ["id", "name", "email", "password"],
       });
 
-      if (!users) {
-        console.log("masuk3");
-
-        throw new Error("Email / Password is wrong!");
+      if (!user) {
+        throw new Error("Email / password is wrong!");
       }
 
-      const isPassValid = await bcrypt.compare(
-        reqBody.password,
-        users.password
-      );
+      const isPasswordValid = await bcrypt.compare(reqBody.password, user.password);
 
-      console.log("masuk4");
-
-      if (!isPassValid) {
-        throw new Error("Email / Password is wrong!");
+      if (!isPasswordValid) {
+        throw new Error("Email / password is wrong!");
       }
 
-      const key = process.env.SECRET_KEY as string;
-      console.log("masuk5");
-
-      const token = jwt.sign({ users }, key, { expiresIn: "1d" });
-      console.log("masuk6");
+      const token = jwt.sign({ user }, "dumbwaysterbaik", { expiresIn: "1d" });
 
       return {
-        message: "Login successfully!",
-        users: {
-          id: users.id,
-          name: users.name,
-          email: users.email,
+        message: "Login successful!",
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
         },
         token: token,
       };
-    } catch (err) {
-      throw new Error("Something wrong on the server!");
+    } catch (error) {
+      throw new Error(error.message);
     }
   }
 }

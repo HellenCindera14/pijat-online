@@ -31,7 +31,6 @@ export default function FormPengaduan() {
                 size="lg"
                 value={"Masukkan complain Mu"}
 
-                //   onChange={handleChange}
               />
             </Box>
             <Box mb={"-1em"}>
