@@ -6,9 +6,11 @@ export default function CardOftenPijat() {
       <Box>
         <Box w={"275px"}>
           <Card>
-            <CardBody gap={2} display={"flex"} justifyContent={"space-between"}>
-              <Heading size="sm">Pijat dan Urut</Heading>
-              <Heading size="sm">3X</Heading>
+            <CardBody>
+              <Box gap={2} display={"flex"} justifyContent={"space-between"}>
+                <Heading size="sm">Pijat dan Urut</Heading>
+                <Heading size="sm">3X</Heading>
+              </Box>
             </CardBody>
           </Card>
         </Box>

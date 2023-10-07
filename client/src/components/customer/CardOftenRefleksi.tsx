@@ -6,9 +6,11 @@ export default function CardOftenRileksi() {
       <Box>
         <Box w={"275px"}>
           <Card>
-            <CardBody gap={2} display={"flex"} justifyContent={"space-between"}>
-              <Heading size="sm">Pijat Rileksi</Heading>
-              <Heading size="sm">3X</Heading>
+          <CardBody>
+              <Box gap={2} display={"flex"} justifyContent={"space-between"}>
+                <Heading size="sm">Pijat Refleksi</Heading>
+                <Heading size="sm">3X</Heading>
+              </Box>
             </CardBody>
           </Card>
         </Box>
