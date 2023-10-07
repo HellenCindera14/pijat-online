@@ -24,10 +24,10 @@ export function usePijetUrut() {
       isOpened: event.target.value === "true",
     });
   }
-  async function handleUpdate() {
+  async function handleUpdate(id: number) {
     try {
-      const res = await API.post(`/kape/:id`, updatePijet);
-      console.log("ini datanya", res);
+      const res = await API.post(`/kape/${id}`, updatePijet);
+      console.log("ini datanya", res.data);
       navigate("kape/dashboard");
     } catch (error) {
       console.log(error);
