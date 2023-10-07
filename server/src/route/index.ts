@@ -2,12 +2,16 @@ import * as express from 'express'
 import { Request, Response } from 'express'
 import SellerController from '../controllers/SellerController'
 import InvoiceController from '../controllers/InvoiceController'
+import UserController from '../controllers/UserController'
 
 const router = express.Router()
 
 router.get("/", ( req: Request, res: Response) => {
-    res.send("Hello from v1!")
+    res.send("Hello from v1!!!!")
 })
+
+router.post("/register", UserController.register)
+router.post("/login", UserController.login)
 
 router.get("/kape", SellerController.find)
 router.post("/kape/create", SellerController.create)
