@@ -15,11 +15,16 @@ export class Rating {
     @Column()
     start: number
     
-    @ManyToOne(() => Seller, (seller) => seller.ratings)
-
+    @ManyToOne(() => Seller, (seller) => seller.ratings, {
+        onDelete : "NO ACTION",
+        onUpdate : "NO ACTION"
+    })
     seller: Seller
 
-    @ManyToOne(() => User, (user) => user.ratings)
+    @ManyToOne(() => User, (user) => user.ratings, {
+        onDelete : "NO ACTION",
+        onUpdate : "NO ACTION"
+    })
     user: User
 
     @CreateDateColumn()

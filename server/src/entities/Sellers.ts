@@ -33,7 +33,7 @@ export class Seller {
     image: string
 
     @Column({ default: 0 })
-    balance: string
+    balance: number
     
     @Column({ default: false })
     isPijetRefleksi: boolean
@@ -44,10 +44,16 @@ export class Seller {
     @Column({ default: false })
     isPijetKretek: boolean
 
-    @OneToMany(() => Invoice, (invoice) => invoice.seller)
+    @OneToMany(() => Invoice, (invoice) => invoice.seller, {
+        onDelete : "NO ACTION",
+        onUpdate : "NO ACTION"
+    })
     invoices: Invoice[]
 
-    @OneToMany(() => Rating, (rating) => rating.seller)
+    @OneToMany(() => Rating, (rating) => rating.seller, {
+        onDelete : "NO ACTION",
+        onUpdate : "NO ACTION"
+    })
     ratings: Rating[]
 
     @CreateDateColumn()
