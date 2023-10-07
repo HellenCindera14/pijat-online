@@ -16,14 +16,14 @@ class ComplaintService {
         }
     }
 
-    async create(reqBody?: any): Promise<any> {
+    async create(reqBody?: any, loginSession?: any): Promise<any> {
         try {
             const complaint = this.complaintRepository.create({
                 subject: reqBody.subject,
                 content: reqBody.content,
                 image: reqBody.image,
-                user: reqBody.user,
                 seller: reqBody.seller,
+                user: loginSession,
             })
 
             await this.complaintRepository.save(complaint)

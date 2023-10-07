@@ -8,7 +8,11 @@ export function usePijetUrut() {
 
     async function getPijetUrutLaki() {
         try {
-            const res = await API.get('/kape/male')
+            const res = await API.get('/kape/male', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`
+                }
+            })
             setPijetUrutLaki(res.data)
         } catch (err) {
             console.log(err)
@@ -17,7 +21,11 @@ export function usePijetUrut() {
 
     async function getPijetUrutWanita() {
         try {
-            const res = await API.get('/kape/female')
+            const res = await API.get('/kape/female', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`
+                }
+            })
             setPijetUrutWanita(res.data)
         } catch (err) {
             console.log(err)

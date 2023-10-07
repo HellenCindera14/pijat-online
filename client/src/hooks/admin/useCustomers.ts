@@ -7,7 +7,11 @@ export function useCustomers() {
 
     async function getCustomerMale() {
         try {
-            const res = await API.get('/cs/L')
+            const res = await API.get('/cs/L', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`
+                }
+            })
             setCustomerMale(res.data)
         } catch (error) {
             console.log(error)
@@ -16,7 +20,11 @@ export function useCustomers() {
 
     async function getCustomerFemale() {
         try {
-            const res = await API.get('/cs/P')
+            const res = await API.get('/cs/P', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`
+                }
+            })
             setCustomerFemale(res.data)
         } catch (error) {
             console.log(error)

@@ -6,7 +6,11 @@ export function useInvoice() {
 
     async function getInvoiceHistory() {
         try {
-            const res = await API.get('/invoiceHistory')
+            const res = await API.get('/invoiceHistory', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`
+                }
+            })
             setInvoiceHistory(res.data)
         } catch (err) {
             console.log(err)        

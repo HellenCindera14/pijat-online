@@ -19,7 +19,7 @@ export function useRegister() {
 
     async function handleRegister() {
         try {
-            await API.post("/register", form)
+            await API.post("/kape/create", form)
             navigate("/cs/login")
         } catch (err) {
             console.log(err)
