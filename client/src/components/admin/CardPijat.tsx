@@ -1,6 +1,5 @@
 import { Avatar, Box, Button, Card, CardHeader, Flex, Heading, Text } from "@chakra-ui/react";
-import React from "react";
-import { Link } from "react-router-dom";
+import ModalAction from "./ModalAction";
 
 export default function CardPijat() {
   return (
@@ -18,11 +17,7 @@ export default function CardPijat() {
                   </Box>
                 </Flex>
                 <Box display={"flex"} gap={2}>
-                  <Link to={"/admin/kape/edit"}>
-                    <Button size="sm" colorScheme="orange">
-                      Action
-                    </Button>
-                  </Link>
+                  <ModalAction />
                   <Button size="sm" colorScheme="red">
                     Delete
                   </Button>

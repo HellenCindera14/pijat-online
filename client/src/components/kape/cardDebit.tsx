@@ -4,6 +4,9 @@ export default function CardDebit() {
   return (
     <>
       <Box w={"40%"}>
+        <Text fontSize={"lg"} fontWeight={"bold"}>
+          Kartu
+        </Text>
         <Card bgColor={"teal.400"} color={"white"}>
           <CardHeader>
             <Heading size="sm">tealVirtual Card</Heading>

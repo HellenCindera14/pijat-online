@@ -1,6 +1,7 @@
 import { Button, Flex, Stack } from "@chakra-ui/react";
 import { GoCopilot, GoGraph, GoHome, GoPeople, GoPerson, GoSignOut } from "react-icons/go";
 import { Link } from "react-router-dom";
+import ModalComplaint from "./ModalComplaint";
 export default function SidebarKp() {
   return (
     <>
@@ -18,12 +19,12 @@ export default function SidebarKp() {
               Performa
             </Button>
           </Link>
-          <Link to="/kape/complaint">
-            <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
-              <GoPeople />
-              Layanan Aduan
-            </Button>
-          </Link>
+          {/* <Link to="/kape/complaint"> */}
+          <Button gap={1} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
+            <GoPeople />
+            <ModalComplaint />
+          </Button>
+          {/* </Link> */}
           <Link to="/kape/profile">
             <Button gap={5} justifyContent={"left"} w={"45vh"} h={"8vh"} ps={10} variant="ghost" colorScheme="teal" color={"black"}>
               <GoPerson />
