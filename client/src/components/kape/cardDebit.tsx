@@ -4,7 +4,7 @@ export default function CardDebit() {
   return (
     <>
       <Box w={"40%"}>
-        <Text fontSize={"lg"} fontWeight={"bold"}>
+        <Text fontSize={"lg"} fontWeight={"bold"} textAlign={"center"} py={3}>
           Kartu
         </Text>
         <Card bgColor={"teal.400"} color={"white"}>
