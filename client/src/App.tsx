@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import LoginCs from "./pages/auth/LoginCs";
 import LoginKp from "./pages/auth/LoginKp";
 import RegisterCs from "./pages/auth/RegisterCs";
@@ -28,6 +28,22 @@ import Support from "./pages/kape/support";
 import Profile from "./pages/kape/profile";
 // import { Routes }  from "react-router-dom";
 
+function IsLogin() {
+  if (!localStorage.token) {
+    return <Navigate to={"/"}/>
+  } else {
+    return <Outlet/>  
+  }
+}
+
+function IsNotLogin() {
+  if (localStorage.token) {
+    return <Navigate to={"/"}/> 
+  } else {
+    return <Outlet/>
+  }
+}
+
 function App() {
   return (
     <>
@@ -36,35 +52,49 @@ function App() {
         <Route path="/v1" element={<ConnectionCS />} />
         <Route path="/v2" element={<ConnectionKp />} />
         {/* Auth */}
-        <Route path="/cs/register" element={<RegisterCs />} />
-        <Route path="/cs/login" element={<LoginCs />} />
-        <Route path="/kape/register" element={<RegisterKp />} />
-        <Route path="/kape/login" element={<LoginKp />} />
+        <Route path="/cs" element={<IsNotLogin/>}>
+          <Route path="register" element={<RegisterCs />} />
+          <Route path="login" element={<LoginCs />} />
+        </Route>
+        <Route path="/kape" element={<IsNotLogin/>}>
+          <Route path="register" element={<RegisterKp />} />
+          <Route path="login" element={<LoginKp />} />
+        </Route>
+
         {/* home */}
         <Route path="/" element={<Home />} />
         {/* admin */}
-        <Route path="/admin/dashboard" element={<DashboardAd />} />
-        <Route path="/admin/cs" element={<Customer />} />
-        <Route path="/admin/kape" element={<Kape />} />
-        <Route path="/admin/kape/edit" element={<KpFormEdit />} />
-        <Route path="/admin/complaint" element={<ComplaintAd />} />
-        <Route path="/admin/detail-complaint/" element={<DetailComplaint />} />
-        <Route path="/admin/support" element={<SupportAd />} />
-        <Route path="/admin/pijat-urut" element={<KpPijatUrut />} />
-        <Route path="/admin/pijat-kretek" element={<KpPijatKretek />} />
-        <Route path="/admin/pijat-refleksi" element={<KpPijatRefleksi />} />
+        <Route path="/admin" element={<IsLogin/>}>
+          <Route path="dashboard" element={<DashboardAd />} />
+          <Route path="cs" element={<Customer />} />
+          <Route path="kape" element={<Kape />} />
+          <Route path="kape/edit" element={<KpFormEdit />} />
+          <Route path="complaint" element={<ComplaintAd />} />
+          <Route path="detail-complaint/" element={<DetailComplaint />} />
+          <Route path="support" element={<SupportAd />} />
+          <Route path="pijat-urut" element={<KpPijatUrut />} />
+          <Route path="pijat-kretek" element={<KpPijatKretek />} />
+          <Route path="pijat-refleksi" element={<KpPijatRefleksi />} />
+        </Route>
+
         {/* customet */}
-        <Route path="/cs/dashboard" element={<DashboardCs />} />
-        <Route path="/cs/services" element={<Services />} />
-        <Route path="/cs/profile" element={<ProfileCS />} />
-        <Route path="/cs/services/pijat_refleksi" element={<ServiceRefleksi />} />
-        <Route path="/cs/services/pijat_urut" element={<ServicePijatUrut />} />
-        <Route path="/cs/services/pijat_kretek" element={<ServiceKretek />} />
+        <Route path="/cs" element={<IsLogin/>}>
+          <Route path="dashboard" element={<DashboardCs />} />
+          <Route path="services" element={<Services />} />
+          <Route path="profile" element={<ProfileCS />} />
+          <Route path="services/pijat_refleksi" element={<ServiceRefleksi />} />
+          <Route path="services/pijat_urut" element={<ServicePijatUrut />} />
+          <Route path="services/pijat_kretek" element={<ServiceKretek />} />
+        </Route>
+
         {/* kape */}
-        <Route path="/kape/dashboard" element={<Dashboardkp />} />
-        <Route path="/kape/performance" element={<Performance />} />
-        <Route path="/kape/support" element={<Support />} />
-        <Route path="/kape/profile" element={<Profile />} />
+        <Route path="/kape" element={<IsLogin/>}>
+          <Route path="dashboard" element={<Dashboardkp />} />
+          <Route path="performance" element={<Performance />} />
+          <Route path="support" element={<Support />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
+
       </Routes>
     </>
   );

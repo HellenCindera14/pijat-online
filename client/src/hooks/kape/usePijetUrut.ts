@@ -1,14 +1,14 @@
-import { API } from './../../../libs/api';
+import { API } from '../../libs/api';
 import { useEffect, useState } from 'react';
-import { IPijetUrut } from '../../../interfaces/customer/IPijet';
+import { IPijetUrut } from '../../interfaces/kape/IPijet';
 
-export function usePijetUrut(district: any) {
-    const [pijetUrutLaki, setPijetUrutLaki] = useState<IPijetUrut[]>([])
-    const [pijetUrutWanita, setPijetUrutWanita] = useState<IPijetUrut[]>([])
+export function usePijetUrut() {
+    const [pijetUrutLaki, setPijetUrutLaki] = useState<IPijetUrut>()
+    const [pijetUrutWanita, setPijetUrutWanita] = useState<IPijetUrut>()
 
     async function getPijetUrutLaki() {
         try {
-            const res = await API.get(`/kape/L?district=${district}`, {
+            const res = await API.get('/kape/male', {
                 headers: {
                     Authorization: `Bearer ${localStorage.token}`
                 }
@@ -21,7 +21,7 @@ export function usePijetUrut(district: any) {
 
     async function getPijetUrutWanita() {
         try {
-            const res = await API.get(`/kape/P?district=${district}`, {
+            const res = await API.get('/kape/female', {
                 headers: {
                     Authorization: `Bearer ${localStorage.token}`
                 }
@@ -35,7 +35,7 @@ export function usePijetUrut(district: any) {
     useEffect(() => {
         getPijetUrutLaki()
         getPijetUrutWanita()
-    }, [district])
+    }, [])
 
     return { pijetUrutLaki, pijetUrutWanita }
 }

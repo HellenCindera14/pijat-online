@@ -1,6 +1,6 @@
-import { API } from './../../../libs/api';
+import { API } from '../../libs/api';
 import { useEffect, useState } from 'react';
-import { IPijetUrut } from '../../../interfaces/customer/IPijet';
+import { IPijetUrut } from '../../interfaces/customer/IPijet';
 
 export function usePijetUrut(district: any) {
     const [pijetUrutLaki, setPijetUrutLaki] = useState<IPijetUrut[]>([])

@@ -1,10 +1,13 @@
 import { Box, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
 import CardKangPijat from "../../components/customer/CardKangPijat";
 import LayoutPage from "../../layouts/customer/LayoutPageCs";
-import { usePijetUrut } from "../../hooks/customer/pijet/usePijetUrut" 
+import { usePijetUrut } from "../../hooks/customer/usePijetUrut" 
+import { useState } from "react";
 
 export default function ServicePijatUrut() {
-  const { pijetUrutLaki, pijetUrutWanita } = usePijetUrut()
+  const [query, setQuery] = useState('');
+
+  const { pijetUrutLaki, pijetUrutWanita } = usePijetUrut(query)
 
   return (
     <>
@@ -17,7 +20,7 @@ export default function ServicePijatUrut() {
             <CardBody>
               <FormControl pb={3}>
                 {/* <FormLabel>Nama</FormLabel> */}
-                <Input type="text" placeholder="Cari Lokasi Kecamatan" />
+                <Input type="text" placeholder="Cari Lokasi Kecamatan" value={query} onChange={(e) => setQuery(e.target.value)} />
               </FormControl>
             </CardBody>
           </Card>

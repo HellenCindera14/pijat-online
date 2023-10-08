@@ -13,7 +13,8 @@ class InvoiceController {
 
     async create(req: Request, res: Response) {
         try {
-            const response = await InvoiceService.create(req.body)
+            const loginSession = res.locals.loginSession
+            const response = await InvoiceService.create(req.body, loginSession)
             return res.status(200).json(response)
         } catch (err) {
             return res.status(500).json({ error: "Cannot create data invoice!"})
@@ -22,7 +23,9 @@ class InvoiceController {
     async update(req: Request, res: Response) {
         try {
             const id = parseInt(req.params.id)
-            const response = await InvoiceService.update(req.body, id)
+            const loginSession = res.locals.loginSession
+
+            const response = await InvoiceService.update(req.body, id ,loginSession)
             return res.status(200).json(response)
         } catch (err) {
             return res.status(500).json({ error: "Cannot update data invoice!"})

@@ -16,13 +16,13 @@ class RatingService {
         }
     }
 
-    async create(reqBody?: any): Promise<any> {
+    async create(reqBody?: any, loginSession?:  any): Promise<any> {
         try {
             const rating = this.ratingRepository.create({
                 review: reqBody.review,
                 star: reqBody.star,
                 seller: reqBody.seller,
-                user: reqBody.user,
+                user: loginSession,
             })
 
             return {
@@ -34,7 +34,7 @@ class RatingService {
         }
     }
 
-    async update(reqBody?: any, id?: any): Promise<any> {
+    async update(reqBody?: any, id?: any, loginSession?:  any): Promise<any> {
         try {
             const rating = await this.ratingRepository.findOne({
                 where: {
@@ -44,6 +44,8 @@ class RatingService {
 
             rating.review = reqBody.review
             rating.star = reqBody.star
+            rating.seller = reqBody.seller
+            rating.user = loginSession
 
             await this.ratingRepository.save(rating)
 

@@ -28,7 +28,7 @@ class InvoiceService {
         }
     }
 
-    async create(reqBody?: any): Promise<any> {
+    async create(reqBody?: any, loginSession?: any): Promise<any> {
         try {
             const invoice = this.invoiceRepository.create({
                 csEmail: reqBody.csEmail,
@@ -41,7 +41,7 @@ class InvoiceService {
                 isPijetKretek: reqBody.isPijetKretek,
                 isPijetRefleksi: reqBody.isPijetRefleksi,
                 isPijetRelaksasi: reqBody.isPijetRelaksasi,
-                user: reqBody.user,
+                user: loginSession,
                 seller: reqBody.seller,
             })
 
@@ -66,8 +66,7 @@ class InvoiceService {
         }
     }
 
-    async update(reqBody?: any, id?: any): Promise<any> {
-        console.log("masuk sini 1")
+    async update(reqBody?: any, id?: any, loginSession?:any): Promise<any> {
         try {
             const invoice = await this.invoiceRepository.findOneOrFail({
                 
@@ -86,7 +85,8 @@ class InvoiceService {
             invoice.isPijetKretek = reqBody.isPijetKretek
             invoice.isPijetRefleksi = reqBody.isPijetRefleksi
             invoice.isPijetRelaksasi = reqBody.isPijetRelaksasi
-            console.log("masuk sini 2")
+            invoice.seller = reqBody.seller
+            invoice.user = loginSession
 
             await this.invoiceRepository.save(invoice)
             console.log("masuk sini 2")

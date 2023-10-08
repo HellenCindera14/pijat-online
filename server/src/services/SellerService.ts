@@ -1,4 +1,4 @@
-import { Repository } from "typeorm";
+import { Like, Repository } from "typeorm";
 import { Seller } from "../entities/Sellers";
 import { AppDataSource } from "../data-source";
 import * as bcrypt from "bcrypt"
@@ -8,12 +8,13 @@ class SellerService {
     private readonly sellerRepository: Repository<Seller> =
     AppDataSource.getRepository(Seller)
 
-    async find(gender?: any): Promise<any> {
+    async find(gender?: any, district?: any): Promise<any> {
         try {
             const seller = await this.sellerRepository.find({
                 where: {
                     gender: gender,
                     isOpened: true,
+                    district: Like(`%${district}`)
                 },
                 order: {
                     id: "DESC",
