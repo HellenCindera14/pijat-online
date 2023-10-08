@@ -1,8 +1,8 @@
-import { Box, Button, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
-import CardPijat from "../../components/admin/CardPijat";
-import LayoutPageAd from "../../layouts/admin/LayoutPageAd";
-import { useSeller } from "../../hooks/admin/useSeller"
+import { Box, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
 import { useState } from "react";
+import CardPijat from "../../components/admin/CardPijat";
+import { useSeller } from "../../hooks/admin/useSeller";
+import LayoutPageAd from "../../layouts/admin/LayoutPageAd";
 
 export default function Kape() {
   const [query, setQuery] = useState('');

@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { API } from './../../libs/api';
 import { useEffect, useState } from 'react';
 import { ISeller } from '../../interfaces/admin/ISeller';
-export function useSeller(district: any) {
+export function useSeller(district: unknown) {
     const [sellerMale, setSellerMale] = useState<ISeller[]>([])
     const [sellerFemale, setSellerFemale] = useState<ISeller[]>([])
 
