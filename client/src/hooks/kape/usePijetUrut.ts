@@ -35,16 +35,33 @@ export function usePijetUrut() {
   }
   async function getPijetUrutLaki() {
     try {
-      const res = await API.get("/kape/male");
+      const res = await API.get("/kape/male", {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      });
       setPijetUrutLaki(res.data);
     } catch (err) {
       console.log(err);
     }
   }
 
+  // async function getPijetUrutLaki() {
+  //   try {
+  //     const res = await API.get("/kape/male");
+  //     setPijetUrutLaki(res.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
   async function getPijetUrutWanita() {
     try {
-      const res = await API.get("/kape/female");
+      const res = await API.get("/kape/female", {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      });
       setPijetUrutWanita(res.data);
     } catch (err) {
       console.log(err);

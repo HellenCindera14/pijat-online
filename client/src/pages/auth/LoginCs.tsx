@@ -1,10 +1,10 @@
 import { Box, Button, Center, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import { GoCopilot } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { useLogin } from "../../hooks/customer/auth/useLogin"
+import { useLogin } from "../../hooks/customer/useLogin";
 
 export default function LoginCs() {
-  const { handleChange, handleLogin } = useLogin()
+  const { handleChange, handleLogin } = useLogin();
   return (
     <>
       <Center>
@@ -17,19 +17,11 @@ export default function LoginCs() {
             <FormControl>
               <Box>
                 <FormLabel>Email</FormLabel>
-                <Input
-                  type="email"
-                  name="email"
-                    onChange={handleChange}
-                />
+                <Input type="email" name="email" onChange={handleChange} />
               </Box>
               <Box>
                 <FormLabel>Password</FormLabel>
-                <Input
-                  type="password"
-                  name="password"
-                    onChange={handleChange}
-                />
+                <Input type="password" name="password" onChange={handleChange} />
               </Box>
             </FormControl>
           </Box>
@@ -43,7 +35,9 @@ export default function LoginCs() {
               </Link>
             </Box>
             <Text>Lupa Password?</Text>
-              <Button colorScheme="teal" onClick={handleLogin}>Login</Button>
+            <Button colorScheme="teal" onClick={handleLogin}>
+              Login
+            </Button>
           </Box>
         </Box>
       </Center>

@@ -31,6 +31,23 @@ class UserService {
     }
   }
 
+  async find(gender?: any): Promise<any> {
+    try {
+      const users = await this.userRepository.find({
+        where: {
+          gender: gender,
+        },
+        order: {
+          id: "DESC",
+        },
+      });
+
+      return users;
+    } catch (err) {
+      throw new Error("Server Error!");
+    }
+  }
+
   async register(reqBody?: any): Promise<any> {
     try {
       const isEmailAvailable = await this.userRepository.findOne({

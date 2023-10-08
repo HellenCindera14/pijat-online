@@ -2,6 +2,15 @@ import { Request, Response } from "express";
 import UserServices from "../services/UserServices";
 
 class UserController {
+  async find(req: Request, res: Response) {
+    try {
+      const gender = req.params.gender;
+      const response = await UserServices.find(gender);
+      return res.status(200).json(response);
+    } catch (err) {
+      return res.status(500).json({ error: "Cannot get data seller!" });
+    }
+  }
   async check(req: Request, res: Response) {
     try {
       const loginSession = res.locals.loginSession;
