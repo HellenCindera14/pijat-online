@@ -67,8 +67,10 @@ class InvoiceService {
     }
 
     async update(reqBody?: any, id?: any): Promise<any> {
+        console.log("masuk sini 1")
         try {
             const invoice = await this.invoiceRepository.findOneOrFail({
+                
                 where: {
                     id: id
                 }
@@ -84,10 +86,13 @@ class InvoiceService {
             invoice.isPijetKretek = reqBody.isPijetKretek
             invoice.isPijetRefleksi = reqBody.isPijetRefleksi
             invoice.isPijetRelaksasi = reqBody.isPijetRelaksasi
+            console.log("masuk sini 2")
 
             await this.invoiceRepository.save(invoice)
+            console.log("masuk sini 2")
 
             const invoiceHistory = this.invoiceHistoryRepository.create({
+                
                 status: invoice.status,
                 price: invoice.price,
                 isPijetKretek: invoice.isPijetKretek,
@@ -95,9 +100,11 @@ class InvoiceService {
                 isPijetRefleksi: invoice.isPijetRefleksi,
                 user: invoice.user,
                 seller: invoice.seller,
+                
             })
 
-            await this.invoiceHistoryRepository.save(invoiceHistory)
+            // await this.invoiceHistoryRepository.save(invoiceHistory)
+            console.log("masuk sini 3")
 
             return {
                 message: "Invoice successfully updated!",
