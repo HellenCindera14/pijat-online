@@ -52,14 +52,14 @@ function App() {
         <Route path="/v1" element={<ConnectionCS />} />
         <Route path="/v2" element={<ConnectionKp />} />
         {/* Auth */}
-        <Route path="/cs" element={<IsNotLogin/>}>
-          <Route path="register" element={<RegisterCs />} />
-          <Route path="login" element={<LoginCs />} />
-        </Route>
-        <Route path="/kape" element={<IsNotLogin/>}>
-          <Route path="register" element={<RegisterKp />} />
-          <Route path="login" element={<LoginKp />} />
-        </Route>
+        {/* <Route path="/cs" element={<IsNotLogin/>}> */}
+          <Route path="/cs/register" element={<RegisterCs />} />
+          <Route path="/cs/login" element={<LoginCs />} />
+        {/* </Route> */}
+        {/* <Route path="/kape" element={<IsNotLogin/>}> */}
+          <Route path="/kape/register" element={<RegisterKp />} />
+          <Route path="/kape/login" element={<LoginKp />} />
+        {/* </Route> */}
 
         {/* home */}
         <Route path="/" element={<Home />} />
