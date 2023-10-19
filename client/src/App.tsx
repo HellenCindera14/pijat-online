@@ -20,27 +20,28 @@ import ServicePijatUrut from "./pages/customer/servicePijatUrut";
 import ServiceRefleksi from "./pages/customer/serviceRefleksi";
 import Services from "./pages/customer/services";
 import Home from "./pages/home";
+import ServicesHome from "./pages/services";
+import AboutUs from "./pages/about";
 import ConnectionCS from "./pages/connectionCs";
 import ConnectionKp from "./pages/connectionKp";
 import Performance from "./pages/kape/Performance";
 import Dashboardkp from "./pages/kape/dashboardkp";
 import Support from "./pages/kape/support";
 import Profile from "./pages/kape/profile";
-// import { Routes }  from "react-router-dom";
 
 function IsLogin() {
   if (!localStorage.token) {
-    return <Navigate to={"/"}/>
+    return <Navigate to={"/"} />;
   } else {
-    return <Outlet/>  
+    return <Outlet />;
   }
 }
 
 function IsNotLogin() {
   if (localStorage.token) {
-    return <Navigate to={"/"}/> 
+    return <Navigate to={"/"} />;
   } else {
-    return <Outlet/>
+    return <Outlet />;
   }
 }
 
@@ -51,20 +52,24 @@ function App() {
         {/* connection */}
         <Route path="/v1" element={<ConnectionCS />} />
         <Route path="/v2" element={<ConnectionKp />} />
+
         {/* Auth */}
-        <Route path="/cs" element={<IsNotLogin/>}>
+        <Route path="/v1" element={<IsNotLogin />}>
           <Route path="register" element={<RegisterCs />} />
           <Route path="login" element={<LoginCs />} />
         </Route>
-        <Route path="/kape" element={<IsNotLogin/>}>
+        <Route path="/kape" element={<IsNotLogin />}>
           <Route path="register" element={<RegisterKp />} />
           <Route path="login" element={<LoginKp />} />
         </Route>
 
         {/* home */}
         <Route path="/" element={<Home />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/services" element={<ServicesHome />} />
+
         {/* admin */}
-        <Route path="/admin" element={<IsLogin/>}>
+        <Route path="/admin" element={<IsLogin />}>
           <Route path="dashboard" element={<DashboardAd />} />
           <Route path="cs" element={<Customer />} />
           <Route path="kape" element={<Kape />} />
@@ -78,7 +83,7 @@ function App() {
         </Route>
 
         {/* customet */}
-        <Route path="/cs" element={<IsLogin/>}>
+        <Route path="/cs" element={<IsLogin />}>
           <Route path="dashboard" element={<DashboardCs />} />
           <Route path="services" element={<Services />} />
           <Route path="profile" element={<ProfileCS />} />
@@ -88,13 +93,12 @@ function App() {
         </Route>
 
         {/* kape */}
-        <Route path="/kape" element={<IsLogin/>}>
+        <Route path="/kape" element={<IsLogin />}>
           <Route path="dashboard" element={<Dashboardkp />} />
           <Route path="performance" element={<Performance />} />
           <Route path="support" element={<Support />} />
           <Route path="profile" element={<Profile />} />
         </Route>
-
       </Routes>
     </>
   );
