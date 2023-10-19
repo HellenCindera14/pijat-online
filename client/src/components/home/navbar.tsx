@@ -11,11 +11,11 @@ export default function Navbar() {
               Home
             </Button>
           </Link>
-          <Link to="/aboutus">
+          {/* <Link to="/aboutus">
             <Button variant={"ghost"} colorScheme="" color="white">
               About Us
             </Button>
-          </Link>
+          </Link> */}
           <Link to="/services">
             <Button variant={"ghost"} colorScheme="" color="white">
               Services

@@ -2,9 +2,10 @@ import { Box, Button, Center, FormControl, FormLabel, Input, Text } from "@chakr
 import { GoCopilot } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { useRegister } from "../../hooks/kape/useRegister";
+import React from "react";
 
 export default function RegisterKp() {
-  const { handleChange, handleRegister } = useRegister()
+  const { handleChange, handleRegister } = useRegister();
 
   return (
     <>
@@ -21,27 +22,15 @@ export default function RegisterKp() {
             <FormControl>
               <Box>
                 <FormLabel>Nama</FormLabel>
-                <Input
-                  type="text"
-                  name="name"
-                    onChange={handleChange}
-                />
+                <Input type="text" name="name" onChange={handleChange} />
               </Box>
               <Box>
                 <FormLabel>Email</FormLabel>
-                <Input
-                  type="email"
-                  name="email"
-                    onChange={handleChange}
-                />
+                <Input type="email" name="email" onChange={handleChange} />
               </Box>
               <Box>
                 <FormLabel>Password</FormLabel>
-                <Input
-                  type="password"
-                  name="password"
-                    onChange={handleChange}
-                />
+                <Input type="password" name="password" onChange={handleChange} />
               </Box>
             </FormControl>
           </Box>
@@ -55,7 +44,9 @@ export default function RegisterKp() {
               </Link>
             </Box>
             <Text>Lupa Password?</Text>
-              <Button colorScheme="teal" onClick={handleRegister}>Register</Button>
+            <Button colorScheme="teal" onClick={handleRegister}>
+              Register
+            </Button>
           </Box>
         </Box>
       </Center>
