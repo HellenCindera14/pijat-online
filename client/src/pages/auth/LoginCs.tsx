@@ -2,6 +2,7 @@ import { Box, Button, Center, FormControl, FormLabel, Input, Text } from "@chakr
 import { GoCopilot } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { useLogin } from "../../hooks/customer/useLogin";
+import React from "react";
 
 export default function LoginCs() {
   const { handleChange, handleLogin } = useLogin();

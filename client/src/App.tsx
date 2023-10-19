@@ -69,8 +69,8 @@ function App() {
 
         {/* home */}
         <Route path="/" element={<Home />} />
-        {/* <Route path="/aboutus" element={<AboutUs />} /> */}
         <Route path="/services" element={<ServicesHome />} />
+        {/* <Route path="/aboutus" element={<AboutUs />} /> */}
 
         {/* admin */}
         <Route path="/admin" element={<IsLogin />}>
