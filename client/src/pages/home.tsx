@@ -1,8 +1,8 @@
 import { Box, Card, CardBody, CardHeader, Divider, Flex, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { GoClock, GoCodeOfConduct, GoFileZip, GoGlobe, GoLocation, GoPerson } from "react-icons/go";
 import pijat from "../assets/images/pijat.jpg";
-import Layout from "../layouts/home/Layout";
-import { GoClock, GoCodeOfConduct, GoFileZip, GoGlobe, GoLocation, GoPersonFill } from "react-icons/go";
 import Footer from "../components/home/Footer";
+import Layout from "../layouts/home/Layout";
 
 export default function Home() {
   return (
@@ -126,7 +126,7 @@ export default function Home() {
             <Flex gap={5} mt={"5vh"}>
               <Card w={"55vh"}>
                 <CardHeader display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} gap={3} mt={5}>
-                  <GoPersonFill size="50px" color="teal" />
+                  <GoPerson size="50px" color="teal" />
                   <Heading size="md" textAlign="center">
                     Terapis Profesional
                   </Heading>
