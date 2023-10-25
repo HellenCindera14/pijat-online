@@ -13,10 +13,11 @@ class UserService {
         where: {
           id: loginSession.user.id,
         },
+        select: ["id", "name", "email", "password", "gender", "phone"],
       });
 
       return {
-        message: "Token is valid!",
+        message: "the token of user is valid!",
         user: {
           id: user.id,
           name: user.name,
@@ -102,7 +103,7 @@ class UserService {
         throw new Error("Email / password is wrong!");
       }
 
-      const token = jwt.sign({ user }, "dumbwaysterbaik", { expiresIn: "1d" });
+      const token = jwt.sign({ user }, "pijatonline++", { expiresIn: "1d" });
 
       return {
         message: "Login successful!",

@@ -15,15 +15,20 @@ router.get("/", (req: Request, res: Response) => {
   res.send("Hello from v1!!!!");
 });
 
-router.get("/cs/check", UserController.check);
+// auth user
+router.post("/auth/cs/login", UserController.login);
+router.post("/auth/cs/register", UserController.register);
+router.get("/auth/cs/check", auth, UserController.check);
+
+// auth kape
+router.post("/auth/kape/login", SellerController.login);
+router.post("/auth/kape/register", SellerController.register);
+router.get("/auth/kape/check", auth, SellerController.check);
+
 router.get("/cs/:gender", auth, UserController.find);
-router.post("/register", UserController.register);
-router.post("/login", UserController.login);
 
 router.get("/kape/:gender", auth, SellerController.find);
-router.post("/kape/create", SellerController.create);
 router.patch("/kape/:id", auth, SellerController.update);
-router.post("/kape/login", SellerController.login);
 
 router.get("/invoice", auth, InvoiceController.find);
 router.post("/invoice/create", auth, InvoiceController.create);
