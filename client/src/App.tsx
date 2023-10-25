@@ -58,19 +58,16 @@ function App() {
         <Route path="/v2" element={<ConnectionKp />} />
 
         {/* Auth */}
-        {/* <Route path="/v1" element={<IsNotLogin />}> */}
         <Route path="/cs/register" element={<FormRegisCs />} />
         <Route path="/cs/login" element={<FormLoginCs />} />
-        {/* </Route> */}
-        {/* <Route path="/kape" element={<IsNotLogin />}> */}
         <Route path="/kp/register" element={<FormRegisKp />} />
         <Route path="/kp/login" element={<FormLoginKp />} />
-        {/* </Route> */}
 
         {/* home */}
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<ServicesHome />} />
-        {/* <Route path="/aboutus" element={<AboutUs />} /> */}
+        <Route path="/" element={<IsNotLogin />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesHome />} />
+        </Route>
 
         {/* admin */}
         <Route path="/admin" element={<IsLogin />}>
