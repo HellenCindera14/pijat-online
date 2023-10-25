@@ -19,10 +19,10 @@ export function useLogin() {
 
   async function handleLogin() {
     try {
-      const res = await API.post("/kape/login", form);
+      const res = await API.post("/auth/kape/login", form);
       setAuthToken(res.data.token);
       localStorage.setItem("token", res.data.token);
-      navigate("/cs/dashboard");
+      navigate("/kape/dashboard");
     } catch (err) {
       console.log(err);
     }

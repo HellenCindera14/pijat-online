@@ -18,7 +18,7 @@ export function useLogin() {
 
   async function handleLogin() {
     try {
-      const res = await API.post("/auth/login", form);
+      const res = await API.post("/auth/cs/login", form);
       setAuthToken(res.data.token);
       localStorage.setItem("token", res.data.token);
       navigate("/cs/dashboard");
