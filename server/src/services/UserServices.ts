@@ -64,7 +64,7 @@ class UserService {
 
       const password = await bcrypt.hash(reqBody.password, 10);
 
-      const users = this.userRepository.create({
+      const user = this.userRepository.create({
         name: reqBody.name,
         password: password,
         address: reqBody.address,
@@ -73,11 +73,14 @@ class UserService {
         image: reqBody.image,
       });
 
-      await this.userRepository.save(users);
+      await this.userRepository.save(user);
+
+      const token = jwt.sign({ user }, "pijatonline++", { expiresIn: "1d" });
 
       return {
         message: "User successfully registered!",
-        users: users,
+        users: user,
+        token: token,
       };
     } catch (err) {
       throw new Error("Something wrong on the server!");

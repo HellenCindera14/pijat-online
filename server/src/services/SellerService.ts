@@ -115,9 +115,12 @@ class SellerService {
 
       await this.sellerRepository.save(seller);
 
+      const token = jwt.sign({ seller }, "pijatonline++", { expiresIn: "1d" });
+
       return {
         message: "Seller successfully registered!",
         seller: seller,
+        token: token,
       };
     } catch (err) {
       throw new Error("Something wrong on the server!");
