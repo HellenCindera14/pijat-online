@@ -1,6 +1,6 @@
 import { Avatar, Box, Card, CardHeader, Flex, Heading, Text } from "@chakra-ui/react";
 import { GoStarFill } from "react-icons/go";
-import { IInvoiceHistory } from "../../interfaces/customer/IInvoice"
+import { IInvoiceHistory } from "../../interfaces/customer/IInvoice";
 export default function CardKHistory(props: IInvoiceHistory) {
   return (
     <>
