@@ -1,8 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToOne } from "typeorm"
 import { Invoice } from "./Invoices"
 import { Rating } from "./Ratings"
 import { Article } from "./Articles"
 import { Complaint } from "./Complaints"
+import { User } from "./Users"
 
 @Entity({ name: "sellers" })
 export class Seller {
@@ -10,27 +11,6 @@ export class Seller {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    name: string
-
-    @Column()
-    password: string
-
-    @Column()
-    address: string
-
-    @Column()
-    district: string
-    
-    @Column()
-    email: string
-
-    @Column()
-    gender: string
-    
-    @Column()
-    phone: string
-    
     @Column({ nullable: true })
     image: string
 
@@ -48,6 +28,12 @@ export class Seller {
 
     @Column({ default: false })
     isOpened: boolean
+
+    @OneToOne(() => User, (user) => user.seller, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
+    user: User
 
     @OneToMany(() => Invoice, (invoice) => invoice.seller, {
         onDelete : "SET NULL",

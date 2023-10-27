@@ -12,9 +12,19 @@ class UserController {
         }
     }
 
+    async update(req: Request, res: Response) {
+        try {
+            const id = parseInt(req.params.id)
+            const response = await UserServices.update(req.body, id)
+            return res.status(200).json(response)
+        } catch (err) {
+            return res.status(500).json({ error: "Failed register seller!"})
+        }
+    }
+
     async register(req: Request, res: Response) {
         try {
-            const response = await UserServices.register(req.body)
+            const response = await UserServices.create(req.body)
             return res.status(200).json(response)
         } catch (err) {
             return res.status(500).json({ error: "Failed register users!"})
@@ -22,12 +32,8 @@ class UserController {
     }
 
     async login(req: Request, res: Response) {
-      console.log("controller1");
-
         try {
-            console.log("controller2");
             const response = await UserServices.login(req.body)
-            console.log("controller3");
             return res.status(200).json(response)
             
         } catch (err) {

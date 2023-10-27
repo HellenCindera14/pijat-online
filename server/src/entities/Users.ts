@@ -1,7 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToOne } from "typeorm"
 import { Invoice } from "./Invoices"
 import { Rating } from "./Ratings"
 import { Complaint } from "./Complaints"
+import { Role } from "./Roles"
+import { Seller } from "./Sellers"
 
 @Entity({ name: "users" })
 export class User {
@@ -18,13 +20,16 @@ export class User {
     @Column()
     email: string
 
-    @Column()
+    @Column({ nullable: true })
     address: string
 
-    @Column()
+    @Column({ nullable: true })
+    district: string
+
+    @Column({ nullable: true })
     gender: string
 
-    @Column()
+    @Column({ nullable: true })
     phone: string
 
     @Column({ nullable: true })
@@ -35,6 +40,18 @@ export class User {
         onUpdate : "CASCADE"
     })
     invoices: Invoice[]
+
+    @OneToOne(() => Role, (role) => role.user, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
+    role: Role
+
+    @OneToOne(() => Seller, (seller) => seller.user, {
+        onDelete : "SET NULL",
+        onUpdate : "CASCADE"
+    })
+    seller: Seller
 
     @OneToMany(() => Rating, (rating) => rating.user, {
         onDelete : "SET NULL",
