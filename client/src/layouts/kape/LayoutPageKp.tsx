@@ -1,12 +1,15 @@
-import { Avatar, Box, Flex, FormControl, FormLabel, Switch } from "@chakra-ui/react";
+import { Avatar, Box, Button, Flex, FormControl, FormLabel, Switch } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import SidebarKp from "../../components/kape/sidebarkp";
+import { usePijetUrut } from "../../hooks/kape/usePijetUrut";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 export default function LayoutPageKp({ children }: LayoutProps) {
+  const { handleChangeUpdateIsOpened, handleUpdate } = usePijetUrut();
+
   return (
     <>
       <Flex justify={"center"} minHeight={"100vh"} direction={"column"}>
@@ -26,10 +29,15 @@ export default function LayoutPageKp({ children }: LayoutProps) {
         >
           <Box>{""}</Box>
           <Box display="flex" alignItems="center" gap={5}>
-            <FormControl display="flex" alignItems="center">
-              <FormLabel mb="0">Aktifikasi Web?</FormLabel>
-              <Switch id="email-alerts" />
-            </FormControl>
+            <form>
+              <FormControl display="flex" alignItems="center">
+                <FormLabel mb="0">Aktifikasi Web?</FormLabel>
+                {/* <input type="hidden" name="id" value={kape.id} /> */}
+                <Button variant={"link"} onClick={handleUpdate}>
+                  <Switch name="isOpened" onChange={handleChangeUpdateIsOpened} />
+                </Button>
+              </FormControl>
+            </form>
             <Avatar size="sm" name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
           </Box>
         </Box>

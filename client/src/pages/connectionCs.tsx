@@ -12,20 +12,12 @@ export default function ConnectionCs() {
             Welcome to Pijat Online
           </Text>
           <Box display={"flex"} gap={3}>
-            <Link to={"/cs/register"}>
+            <Link to={"register"}>
               <Button colorScheme="teal">Register </Button>
             </Link>
             <Link to={"/cs/login"}>
               <Button colorScheme="teal">Login </Button>
             </Link>
-            {/* </Box> */}
-            {/* <Box display={"flex"} gap={3} mt={3}> */}
-            {/* <Link to={"/kape/register"}>
-              <Button colorScheme="teal">Register Kang Pijat</Button>
-            </Link>
-            <Link to={"/kape/login"}>
-              <Button colorScheme="teal">Login Kang Pijat</Button>
-            </Link> */}
           </Box>
         </Box>
       </Center>

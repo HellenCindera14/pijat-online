@@ -29,12 +29,6 @@ export class Seller {
     @Column({ default: false })
     isOpened: boolean
 
-    @OneToOne(() => User, (user) => user.seller, {
-        onDelete : "SET NULL",
-        onUpdate : "CASCADE"
-    })
-    user: User
-
     @OneToMany(() => Invoice, (invoice) => invoice.seller, {
         onDelete : "SET NULL",
         onUpdate : "CASCADE"

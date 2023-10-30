@@ -12,15 +12,13 @@ class UserService {
     private readonly sellerRepository: Repository<Seller> =
     AppDataSource.getRepository(Seller)
 
-    async find(gender?: any): Promise<any> {
+    async find(){
       try {
           const users = await this.userRepository.find({
-              where: {
-                  gender: gender,
-              },
               order: {
                   id: "DESC",
               },
+              relations: ["seller"]
           })
 
           return users
@@ -29,106 +27,109 @@ class UserService {
       }
   }
 
-  async create(reqBody?: any): Promise<any> {
+async create(reqBody: any): Promise<any> {
     try {
         const isEmailAvailable = await this.userRepository.findOne({
             where: {
-                email: reqBody.email
+                email: reqBody.email,
             },
-            relations: ['role'],
-            select: ['email'],
-        })
+        });
 
         if (isEmailAvailable) {
-            throw new Error("Email alreary registered!")
+            throw new Error("Email already registered!");
         }
 
-        const password = await bcrypt.hash(reqBody.password, 10)
+        const password = await bcrypt.hash(reqBody.password, 10);
 
         let user: User;
         let seller: Seller | undefined;
 
         if (reqBody.role === "seller") {
-             seller = this.sellerRepository.create({
-                isPijetKretek:reqBody.isPijetKretek,
-                isPijetRefleksi: reqBody.isPijetRefleksi,
-                isPijetRelaksasi: reqBody.isPijetRelaksasi,
+            seller = this.sellerRepository.create({
+                isPijetKretek: false,
+                isPijetRefleksi: false,
+                isPijetRelaksasi: false,
                 image: reqBody.image,
-            })
-             user = this.userRepository.create({
+            });
+            await this.sellerRepository.save(seller);
+
+            user = this.userRepository.create({
                 name: reqBody.name,
                 email: reqBody.email,
                 password: password,
-                role: reqBody.role,
-                seller: seller
-            })
+                seller: seller,
+            });
+        await this.userRepository.save(user);
+
         } else {
             user = this.userRepository.create({
                 name: reqBody.name,
                 email: reqBody.email,
                 password: password,
-                role: reqBody.role,
-            })
+            });
+            await this.userRepository.save(user);
+
         }
 
-         if (seller) {
-            await this.sellerRepository.save(seller)
-         }
+        const key = process.env.SECRET_KEY as string        
 
-         await this.userRepository.save(user)
+        const token = jwt.sign({user}, key, { expiresIn: '1d'})
+
 
         return {
             message: "User successfully registered!",
             seller: seller,
             user: user,
-        }
+            token: token,
+        };
     } catch (err) {
-        throw new Error("Something wrong on the server!")
+        throw new Error("Something went wrong on the server!");
     }
 }
 
-async update(reqBody?: any, id?:any): Promise<any> {
-    try {
-        const user = await this.userRepository.findOneOrFail({
-            where: {
-                id: id
-            }
-        })
 
-        const seller = await this.sellerRepository.findOne({
-            where: {
-                id: user.id
-            }
-        })
+// async update(reqBody?: any, id?:any): Promise<any> {
+//     try {
+//         const user = await this.userRepository.findOneOrFail({
+//             where: {
+//                 id: id
+//             }
+//         })
+
+//         const seller = await this.sellerRepository.findOne({
+//             where: {
+//                 id: user.id
+//             }
+//         })
         
-        user.seller = seller
-        user.email = reqBody.email
-        user.address = reqBody.address
-        user.image = reqBody.image
-        user.gender = reqBody.gender
-        user.name = reqBody.name
-        user.phone = reqBody.phone
+//         user.seller = seller
+//         user.email = reqBody.email
+//         user.address = reqBody.address
+//         user.image = reqBody.image
+//         user.gender = reqBody.gender
+//         user.name = reqBody.name
+//         user.phone = reqBody.phone
 
-        const resUser = await this.userRepository.save(user)
+//         const resUser = await this.userRepository.save(user)
 
         
 
-        seller.user = user
-        seller.balance = reqBody.balance
-        seller.isPijetRefleksi = reqBody.isPijetRefleksi
-        seller.isPijetRelaksasi = reqBody.isPijetRelaksasi
-        seller.isPijetKretek = reqBody.isPijetKretek
+//         seller.user = user
+//         seller.balance = reqBody.balance
+//         seller.isPijetRefleksi = reqBody.isPijetRefleksi
+//         seller.isPijetRelaksasi = reqBody.isPijetRelaksasi
+//         seller.isPijetKretek = reqBody.isPijetKretek
 
 
-        return {
-            message: "User successfully updated!",
-            seller: seller,
-            resUser: resUser,
-        }
-    } catch (err) {
-        throw new Error("Something wrong on the server!")
-    }
-}
+//         return {
+//             message: "User successfully updated!",
+//             seller: seller,
+//             resUser: resUser,
+//         }
+//     } catch (err) {
+//         throw new Error("Something wrong on the server!")
+//     }
+// }
 
 async login(reqBody?: any): Promise<any> {
     try {
@@ -136,7 +137,8 @@ async login(reqBody?: any): Promise<any> {
             where: {
                 email: reqBody.email,
             },
-            select: ["id", "name", "email", "password"]
+            relations: ["seller"],
+            select: ["id", "name", "email", "password", "seller"]
         })
 
         if(!user) {

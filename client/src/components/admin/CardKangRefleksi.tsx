@@ -1,5 +1,4 @@
 import { Box, Button, Card, CardBody, Heading } from "@chakra-ui/react";
-import React from "react";
 import { Link } from "react-router-dom";
 
 export default function CardKangRefleksi() {

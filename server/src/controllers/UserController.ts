@@ -5,22 +5,22 @@ class UserController {
     async find(req: Request, res: Response) {
         try {
             const gender = req.params.gender
-            const response = await UserServices.find(gender)
+            const response = await UserServices.find()
             return res.status(200).json(response)
         } catch (err) {
             return res.status(500).json({ error: "Cannot get data seller!"})
         }
     }
 
-    async update(req: Request, res: Response) {
-        try {
-            const id = parseInt(req.params.id)
-            const response = await UserServices.update(req.body, id)
-            return res.status(200).json(response)
-        } catch (err) {
-            return res.status(500).json({ error: "Failed register seller!"})
-        }
-    }
+    // async update(req: Request, res: Response) {
+    //     try {
+    //         const id = parseInt(req.params.id)
+    //         const response = await UserServices.update(req.body, id)
+    //         return res.status(200).json(response)
+    //     } catch (err) {
+    //         return res.status(500).json({ error: "Failed register seller!"})
+    //     }
+    // }
 
     async register(req: Request, res: Response) {
         try {

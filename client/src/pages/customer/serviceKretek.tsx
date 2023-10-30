@@ -1,21 +1,13 @@
-import {
-  Box,
-  Card,
-  CardBody,
-  FormControl,
-  Heading,
-  Input,
-  Stack,
-} from "@chakra-ui/react";
+import { Box, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
 import CardKangPijat from "../../components/customer/CardKangPijat";
 import LayoutPage from "../../layouts/customer/LayoutPageCs";
 import { usePijetUrut } from "../../hooks/customer/pijet/usePijetUrut";
 import { useState } from "react";
 
 export default function ServiceKretek() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
-  const { pijetUrutLaki, pijetUrutWanita } = usePijetUrut(query)
+  const { pijetUrutLaki, pijetUrutWanita } = usePijetUrut(query);
   return (
     <>
       <LayoutPage>
@@ -41,17 +33,7 @@ export default function ServiceKretek() {
                   Laki - Laki
                 </Heading>
                 {pijetUrutLaki.map((data) => (
-                  <CardKangPijat
-                    key={data.id}
-                    id={data.id}
-                    phone={data.phone}
-                    image={data.image}
-                    name={data.name}
-                    gender={data.gender}
-                    email={data.email}
-                    district={data.district}
-                    address={data.address}
-                  />
+                  <CardKangPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address} />
                 ))}
               </Box>
               <Box w={"50%"} ps={6}>
@@ -59,17 +41,7 @@ export default function ServiceKretek() {
                   Perempuan
                 </Heading>
                 {pijetUrutWanita.map((data) => (
-                  <CardKangPijat
-                    key={data.id}
-                    id={data.id}
-                    phone={data.phone}
-                    image={data.image}
-                    name={data.name}
-                    gender={data.gender}
-                    email={data.email}
-                    district={data.district}
-                    address={data.address}
-                  />
+                  <CardKangPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address} />
                 ))}
               </Box>
             </CardBody>

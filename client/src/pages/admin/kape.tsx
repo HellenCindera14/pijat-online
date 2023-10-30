@@ -1,13 +1,13 @@
 import { Box, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
-import CardPijat from "../../components/admin/CardPijat";
-import LayoutPageAd from "../../layouts/admin/LayoutPageAd";
-import { useSeller } from "../../hooks/admin/useSeller"
 import { useState } from "react";
+import CardPijat from "../../components/admin/CardPijat";
+import { useSeller } from "../../hooks/admin/useSeller";
+import LayoutPageAd from "../../layouts/admin/LayoutPageAd";
 
 export default function Kape() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
-  const { sellerMale, sellerFemale } = useSeller(query)
+  const { sellerMale, sellerFemale } = useSeller(query);
   return (
     <>
       <LayoutPageAd>
@@ -25,7 +25,7 @@ export default function Kape() {
                   Laki - Laki
                 </Heading>
                 {sellerMale.map((data) => (
-                  <CardPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address}/>
+                  <CardPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address} />
                 ))}
               </Box>
               <Box w={"50%"}>
@@ -33,7 +33,7 @@ export default function Kape() {
                   Perempuan
                 </Heading>
                 {sellerFemale.map((data) => (
-                  <CardPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address}/>
+                  <CardPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address} />
                 ))}
               </Box>
             </CardBody>

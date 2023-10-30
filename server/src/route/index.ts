@@ -15,10 +15,10 @@ router.get("/", ( req: Request, res: Response) => {
     res.send("Hello from v1!!!!")
 })
 
-router.get("/cs/:gender", auth, UserController.find)
+router.get("/user", UserController.find)
 router.post("/register", UserController.register)
 router.post("/login", UserController.login)
-router.patch("/cs/:id", auth, UserController.update)
+// router.patch("/cs/:id", auth, UserController.update)
 
 router.get("/kape/:gender", auth, SellerController.find)
 

@@ -1,13 +1,13 @@
 import { Box, Card, CardBody, FormControl, Heading, Input, Stack } from "@chakra-ui/react";
 import LayoutPage from "../../layouts/customer/LayoutPageCs";
 import CardKangPijat from "../../components/customer/CardKangPijat";
-import { usePijetUrut } from "../../hooks/customer/usePijetUrut" 
+import { usePijetUrut } from "../../hooks/customer/usePijetUrut";
 import { useState } from "react";
 
 export default function ServiceRefleksi() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
-  const { pijetUrutLaki, pijetUrutWanita } = usePijetUrut(query)
+  const { pijetUrutLaki, pijetUrutWanita } = usePijetUrut(query);
 
   return (
     <>
@@ -20,7 +20,7 @@ export default function ServiceRefleksi() {
             <CardBody>
               <FormControl pb={3}>
                 {/* <FormLabel>Nama</FormLabel> */}
-                <Input type="text" placeholder="Cari Lokasi Kecamatan" value={query} onChange={(e) => setQuery(e.target.value)}/>
+                <Input type="text" placeholder="Cari Lokasi Kecamatan" value={query} onChange={(e) => setQuery(e.target.value)} />
               </FormControl>
             </CardBody>
           </Card>
@@ -34,7 +34,7 @@ export default function ServiceRefleksi() {
                   Laki - Laki
                 </Heading>
                 {pijetUrutLaki.map((data) => (
-                  <CardKangPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address}/>
+                  <CardKangPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address} />
                 ))}
               </Box>
               <Box w={"50%"} ps={6}>
@@ -42,7 +42,7 @@ export default function ServiceRefleksi() {
                   Perempuan
                 </Heading>
                 {pijetUrutWanita.map((data) => (
-                  <CardKangPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address}/>
+                  <CardKangPijat key={data.id} id={data.id} phone={data.phone} image={data.image} name={data.name} gender={data.gender} email={data.email} district={data.district} address={data.address} />
                 ))}
               </Box>
             </CardBody>

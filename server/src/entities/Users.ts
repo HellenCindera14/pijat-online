@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToOne, JoinColumn } from "typeorm"
 import { Invoice } from "./Invoices"
 import { Rating } from "./Ratings"
 import { Complaint } from "./Complaints"
@@ -47,10 +47,8 @@ export class User {
     })
     role: Role
 
-    @OneToOne(() => Seller, (seller) => seller.user, {
-        onDelete : "SET NULL",
-        onUpdate : "CASCADE"
-    })
+    @OneToOne(() => Seller)
+    @JoinColumn()
     seller: Seller
 
     @OneToMany(() => Rating, (rating) => rating.user, {
